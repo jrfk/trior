@@ -30,3 +30,7 @@ __all__ = [
     "open_memory_channel", "open_nursery", "run", "sleep", "sleep_forever",
     "sleep_until",
 ]
+
+from . import lowlevel, socket
+from .lowlevel import BusyResourceError
+__all__ += ["BusyResourceError", "lowlevel", "socket"]

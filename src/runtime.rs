@@ -1,6 +1,7 @@
 use pyo3::exceptions::{PyRuntimeError, PyStopIteration, PyValueError};
 use pyo3::prelude::*;
 use pyo3::types::{PyAny, PyList};
+use crate::reactor::Reactor;
 use std::cell::RefCell;
 use std::cmp::Reverse;
 use std::collections::{BinaryHeap, HashMap, VecDeque};
@@ -73,6 +74,8 @@ struct Task {
     join_group: Option<usize>,
     shield_next: bool,
     park_cancel: Option<usize>,
+    io_wait: Option<(i32, bool)>,
+    io_closed: bool,
 }
 
 struct Scope {
@@ -96,6 +99,7 @@ struct State {
     deadlines: BinaryHeap<Reverse<(Instant, usize, usize)>>,
     current: Option<usize>,
     root: Option<PyResult<Py<PyAny>>>,
+    reactor: Reactor,
 }
 
 impl State {
@@ -149,6 +153,24 @@ impl State {
         self.ready.push_back(id);
     }
 
+    fn clear_io(&mut self, id: usize) {
+        if let Some((fd, write)) = self.task_mut(id).io_wait.take() {
+            self.reactor.remove(fd, write, id);
+        }
+    }
+
+    fn deliver_io(&mut self, ready: Vec<(usize, bool)>) {
+        for (id, closed) in ready {
+            if self.tasks.get(&id).is_some_and(|t| t.status == Status::Parked) {
+                let task = self.task_mut(id);
+                task.io_wait = None;
+                task.io_closed = closed;
+                task.shield_next = true;
+                self.enqueue(id);
+            }
+        }
+    }
+
     fn cancel(&mut self, scope: usize) {
         self.scopes.get_mut(&scope).unwrap().cancelled = true;
         self.wake_cancelled();
@@ -162,6 +184,7 @@ impl State {
         for (id, scope) in cancelled {
             if self.task(id).status == Status::Parked {
                 self.task_mut(id).park_cancel = Some(scope);
+                self.clear_io(id);
             }
             self.enqueue(id);
         }
@@ -214,6 +237,8 @@ impl State {
             join_group: None,
             shield_next: false,
             park_cancel: None,
+            io_wait: None,
+            io_closed: false,
         });
         if let Some(group) = nursery {
             self.scopes.get_mut(&group).unwrap().children += 1;
@@ -286,6 +311,36 @@ impl Runtime {
         state.task_mut(id).shield_next = true;
         state.enqueue(id);
         true
+    }
+
+    fn register_io(&self, fd: i32, write: bool) -> PyResult<bool> {
+        let mut state = self.state.borrow_mut();
+        let id = state.current()?;
+        if state.reactor.register(fd, write, id)? {
+            state.task_mut(id).io_wait = Some((fd, write));
+            state.task_mut(id).io_closed = false;
+            Ok(true)
+        } else {
+            Ok(false)
+        }
+    }
+
+    fn unregister_io(&self) -> PyResult<()> {
+        let mut state = self.state.borrow_mut();
+        let id = state.current()?;
+        state.clear_io(id);
+        Ok(())
+    }
+
+    fn io_closed(&self) -> PyResult<bool> {
+        let state = self.state.borrow();
+        Ok(state.task(state.current()?).io_closed)
+    }
+
+    fn notify_closing(&self, fd: i32) {
+        let mut state = self.state.borrow_mut();
+        let ready = state.reactor.close(fd).into_iter().map(|id| (id, true)).collect();
+        state.deliver_io(ready);
     }
 
     fn resource_counts(&self) -> (usize, usize, usize, usize) {
@@ -365,6 +420,7 @@ impl Runtime {
 
     fn run(&self, py: Python<'_>, coro: Py<PyAny>, context: Py<PyAny>, cancelled: &Bound<'_, PyAny>) -> PyResult<Py<PyAny>> {
         self.state.borrow_mut().spawn(py, coro, context, None, Vec::new())?;
+        let mut steps = 0usize;
         loop {
             let next = {
                 let mut state = self.state.borrow_mut();
@@ -374,6 +430,11 @@ impl Runtime {
                 state.expire_deadlines();
                 state.wake_timers();
                 state.compact_heaps();
+                if !state.reactor.is_empty() && steps >= 64 {
+                    let ready = state.reactor.wait(Some(Duration::ZERO))?;
+                    state.deliver_io(ready);
+                    steps = 0;
+                }
                 state.ready.pop_front()
             };
             let Some(id) = next else {
@@ -383,12 +444,25 @@ impl Runtime {
                      state.deadlines.peek().map(|entry| entry.0.0)]
                         .into_iter().flatten().min()
                 };
+                {
+                    let mut state = self.state.borrow_mut();
+                    if !state.reactor.is_empty() {
+                        let timeout = deadline.map(|d| d.saturating_duration_since(Instant::now()));
+                        let reactor = &mut state.reactor;
+                        let ready = py.detach(|| reactor.wait(timeout))?;
+                        state.expire_deadlines();
+                        state.deliver_io(ready);
+                        steps = 0;
+                        continue;
+                    }
+                }
                 let Some(deadline) = deadline else {
                     return Err(PyRuntimeError::new_err("deadlocked runtime"));
                 };
                 py.detach(|| std::thread::sleep(deadline.saturating_duration_since(Instant::now())));
                 continue;
             };
+            steps = steps.saturating_add(1);
             let (coro, send, context_run, cancellation) = {
                 let mut state = self.state.borrow_mut();
                 let join_group = state.task(id).join_group;
@@ -465,6 +539,7 @@ impl Runtime {
                         3 => {
                             if let Some(scope) = state.effective_cancel(id) {
                                 state.task_mut(id).park_cancel = Some(scope);
+                                state.clear_io(id);
                                 state.enqueue(id);
                             } else {
                                 state.task_mut(id).status = Status::Parked;

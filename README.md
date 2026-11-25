@@ -26,7 +26,7 @@ uv venv --python 3.12
 uv pip install --python .venv/bin/python -r requirements-dev.lock
 . .venv/bin/activate
 maturin develop --release --locked
-python -m pytest -q spikes/runtime/test_runtime.py spikes/runtime/test_sync.py
+python -m pytest -q spikes/runtime/test_runtime.py spikes/runtime/test_sync.py spikes/runtime/test_io.py
 python spikes/runtime/bench_runtime.py
 python spikes/runtime/bench_sync.py
 ```
@@ -36,9 +36,16 @@ in Rust. Python coroutines execute in CPython. Event, Lock, Semaphore and
 memory channels have experimental Python APIs with native wait queues;
 the synchronization wrappers and channel payload storage use Python.
 
-The API is incomplete. Network I/O, thread bridges, the full Trio low-level
-API, guest mode, instrumentation, production resource cleanup, and exhaustive
-compatibility remain to be implemented or verified.
+The Unix readiness reactor owns descriptor registration in Rust and uses
+level-triggered poll, with timer-aware blocking waits and bounded polling
+under ready-task load. The experimental trior.lowlevel and trior.socket
+modules expose descriptor readiness and nonblocking socket operations.
+The API is incomplete: epoll/kqueue optimization, async DNS, TCP connect,
+higher-level streams, thread bridges, guest mode, instrumentation,
+production resource cleanup and exhaustive compatibility remain outstanding.
+The reactor has been tested on Linux only.
+
+See [Stage 19](results/stage19/RESULTS_JA.md) for I/O measurements.
 
 See [Stage 18](results/stage18/RESULTS_JA.md) for measurements and limitations.
 
