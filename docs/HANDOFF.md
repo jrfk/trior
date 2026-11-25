@@ -69,6 +69,7 @@ individual waits, a likely optimization opportunity.
 
 Stage 20 (implementation commit c783eb1; previous I/O stage 7806bbc).
 Stage 20.5 reorganizes source and tests without changing scheduler algorithms.
+Stage 20.6 adds Nursery.start, TaskStatus and TASK_STATUS_IGNORED; see research.md.
 Linux default epoll and poll each passed 63 tests. macOS ARM64 cross-target
 cargo check passed, not actual build/link/run on a Mac. No Windows support.
 CPython 3.15 and free-threaded Python remain unverified.
@@ -77,6 +78,7 @@ CPython 3.15 and free-threaded Python remain unverified.
 |---|---|
 | run, sleep, sleep_until, sleep_forever, current_time, checkpoint | Basic implementation |
 | open_nursery, CancelScope, deadline, dynamic shield | Basic implementation |
+| Nursery.start, TaskStatus.started, TASK_STATUS_IGNORED | Implemented; common initialization, cancellation and transfer cases tested |
 | Event, Lock, Semaphore, memory channels | Basic implementation |
 | lowlevel.wait_readable, wait_writable, notify_closing | Implemented/tested basic cases |
 | socket, socketpair, from_stdlib_socket | Implemented partial facade |

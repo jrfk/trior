@@ -75,3 +75,43 @@ Paired raw samples (CPU milliseconds, affinity CPU 0):
 - sparse after: 21.25, 19.60, 17.44, 17.14, 18.76, 19.00, 18.51, 17.11, 18.09
 - dense baseline: 98.87, 83.95, 86.53, 73.15, 84.48, 89.22, 77.70, 81.79, 70.86
 - dense after: 89.46, 71.17, 72.86, 80.80, 77.49, 86.31, 68.16, 79.02, 65.10
+
+## Stage 20.6: Nursery.start
+
+Implemented startup handshake, return values, generic TaskStatus protocol and
+TASK_STATUS_IGNORED. A provisional nursery owns errors and cancellation until
+started() transfers the task subtree and its inner scopes to the target nursery.
+Rust tracks provisional members rather than scanning the whole task table on
+each transfer. Startup into a non-ancestor nursery is not yet supported;
+full Trio parity, instrumentation and task naming remain outstanding.
+
+Linux CPython 3.12.14: 83 tests pass on epoll and 83 on poll (20 new differential
+tests). Cases include 600 retained children, descendant signaling, cancellation
+during startup, failure before and after started(), duplicate/missing started,
+scope transfer, and ignored status.
+
+Sequential start of N children, which wait on a common event until all have
+started. Fixed work includes startup and cleanup, seven repeats per module
+in separate processes, medians (milliseconds):
+
+| Children | Trio CPU | Trior CPU | Trio wall | Trior wall |
+|---:|---:|---:|---:|---:|
+| 64 | 1.756 | 0.393 | 1.755 | 0.392 |
+| 600 | 15.767 | 3.642 | 15.766 | 3.640 |
+| 2000 | 51.304 | 13.058 | 51.302 | 13.057 |
+
+600 children: 4.33x CPU efficiency, 76.9% less process CPU time. The initial
+full-table scan prototype regressed at 2000 children (90ms vs Trio 57ms);
+the indexed implementation avoids that scan. Short synthetic benchmark,
+not a proof of production throughput or complete compatibility.
+Reproduce: python benchmarks/bench_nursery_start.py trio --count 600
+and the same command with trior.
+
+Raw CPU samples (ms):
+
+- trio 64: 2.634, 1.791, 1.747, 1.756, 1.884, 1.637, 1.676
+- trior 64: 0.725, 0.361, 0.715, 0.322, 0.592, 0.393, 0.362
+- trio 600: 18.188, 15.071, 15.859, 14.014, 20.620, 15.767, 12.863
+- trior 600: 5.177, 3.648, 3.689, 3.461, 3.642, 3.370, 3.596
+- trio 2000: 56.885, 51.419, 44.316, 51.304, 45.083, 53.121, 44.278
+- trior 2000: 14.420, 13.058, 12.446, 11.247, 11.794, 13.446, 14.779

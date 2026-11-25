@@ -25,7 +25,7 @@ Python executes user coroutines; Rust owns scheduler state, ready queues,
 timers, cancellation and I/O readiness. Linux uses epoll; macOS uses kqueue;
 poll is retained for comparison. The public Python package is `trior`.
 
-Current prototype: basic nurseries, cancellation, timers, synchronization,
+Current prototype: basic nurseries (including start/start_soon and task status), cancellation, timers, synchronization,
 memory channels and partial nonblocking socket operations. TCP connect,
 higher-level streams, DNS, threads and complete Trio API parity are pending.
 Linux has been tested; macOS ARM64 previously passed a cross-target type check.

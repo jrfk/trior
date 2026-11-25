@@ -3,6 +3,7 @@
 import contextvars
 import math
 import types
+from typing import Protocol, TypeVar
 from collections import deque
 
 from ._native import Runtime, Trap, WaitQueue
@@ -417,6 +418,37 @@ class CancelScope:
         return self.cancelled_caught
 
 
+_StatusT = TypeVar("_StatusT", contravariant=True)
+
+
+class TaskStatus(Protocol[_StatusT]):
+    def started(self, value: _StatusT = None) -> None: ...
+
+
+class _IgnoredTaskStatus:
+    def started(self, value=None):
+        pass
+
+
+TASK_STATUS_IGNORED = _IgnoredTaskStatus()
+_NOT_STARTED = object()
+
+
+class _StartupStatus:
+    def __init__(self, runtime, source, target, starter):
+        self.runtime = runtime
+        self.source = source
+        self.target = target
+        self.starter = starter
+        self.value = _NOT_STARTED
+
+    def started(self, value=None):
+        if self.value is not _NOT_STARTED:
+            raise RuntimeError("called 'started' twice on the same task status")
+        self.value = value
+        self.runtime.finish_start(self.source, self.target, self.starter)
+
+
 class Nursery:
     def __init__(self, shield=False):
         self.cancel_scope = CancelScope(shield=shield)
@@ -440,6 +472,36 @@ class Nursery:
         except BaseException:
             coro.close()
             raise
+
+    async def start(self, async_fn, *args, name=None):
+        if not self._active:
+            raise RuntimeError("nursery closed")
+        runtime = self.cancel_scope._runtime
+        starter = runtime.current_task_id()
+        # Before started(), failures and cancellation belong to this call,
+        # not the target nursery. Native reparenting commits the handoff.
+        try:
+            async with open_nursery() as provisional:
+                status = _StartupStatus(
+                    runtime, provisional.cancel_scope._id,
+                    self.cancel_scope._id, starter,
+                )
+                runtime.begin_start(status.source, status.target)
+                coro = async_fn(*args, task_status=status)
+                if not isinstance(coro, types.CoroutineType):
+                    raise TypeError("expected an async function")
+                try:
+                    runtime.spawn(provisional.cancel_scope._id, coro, contextvars.copy_context())
+                except BaseException:
+                    coro.close()
+                    raise
+        except BaseExceptionGroup as exc:
+            if len(exc.exceptions) == 1:
+                raise exc.exceptions[0] from None
+            raise
+        if status.value is _NOT_STARTED:
+            raise RuntimeError("child exited without calling task_status.started()")
+        return status.value
 
     async def __aexit__(self, exc_type, exc, traceback):
         if exc is not None:

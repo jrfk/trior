@@ -11,6 +11,8 @@ from ._runtime import (
     MemoryReceiveChannel,
     MemorySendChannel,
     Nursery,
+    TaskStatus,
+    TASK_STATUS_IGNORED,
     Semaphore,
     WouldBlock,
     checkpoint,
@@ -26,7 +28,7 @@ from ._runtime import (
 __all__ = [
     "BrokenResourceError", "CancelScope", "Cancelled", "ClosedResourceError",
     "EndOfChannel", "Event", "Lock", "MemoryReceiveChannel", "MemorySendChannel",
-    "Nursery", "Semaphore", "WouldBlock", "checkpoint", "current_time",
+    "Nursery", "TaskStatus", "TASK_STATUS_IGNORED", "Semaphore", "WouldBlock", "checkpoint", "current_time",
     "open_memory_channel", "open_nursery", "run", "sleep", "sleep_forever",
     "sleep_until",
 ]

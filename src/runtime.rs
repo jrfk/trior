@@ -4,7 +4,7 @@ use pyo3::types::{PyAny, PyList};
 use crate::reactor::Reactor;
 use std::cell::RefCell;
 use std::cmp::Reverse;
-use std::collections::{BinaryHeap, HashMap, VecDeque};
+use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::time::{Duration, Instant};
 
 #[pyclass]
@@ -100,6 +100,7 @@ struct State {
     current: Option<usize>,
     root: Option<PyResult<Py<PyAny>>>,
     reactor: Reactor,
+    startup_members: HashMap<usize, HashSet<usize>>,
 }
 
 impl State {
@@ -232,6 +233,13 @@ impl State {
         self.next_task += 1;
         let send = coro.bind(py).getattr("send")?.unbind();
         let context_run = context.bind(py).getattr("run")?.unbind();
+        if !self.startup_members.is_empty() {
+            for scope in &scopes {
+                if let Some(members) = self.startup_members.get_mut(scope) {
+                    members.insert(id);
+                }
+            }
+        }
         self.tasks.insert(id, Task {
             coro, send, context_run, nursery, scopes, status: Status::Ready, started: false, generation: 0,
             join_group: None,
@@ -383,6 +391,7 @@ impl Runtime {
             return Err(PyRuntimeError::new_err("scope closed out of order"));
         }
         state.task_mut(task).scopes.pop();
+        state.startup_members.remove(&scope);
         let entry = state.scopes.remove(&scope).unwrap();
         let cancelled = entry.cancelled;
         drop(state);
@@ -411,6 +420,83 @@ impl Runtime {
             .ok_or_else(|| PyRuntimeError::new_err("nursery is not active in current task"))?;
         scopes.truncate(end + 1);
         state.spawn(py, coro, context, Some(group), scopes)
+    }
+
+    fn begin_start(&self, source: usize, target: usize) -> PyResult<()> {
+        let mut state = self.state.borrow_mut();
+        let current = state.current()?;
+        if !state.task(current).scopes.contains(&target) {
+            return Err(PyRuntimeError::new_err("target nursery is not an ancestor"));
+        }
+        state.startup_members.insert(source, HashSet::new());
+        Ok(())
+    }
+
+    // Move the provisional start() nursery's child subtree to its final nursery.
+    // The starter retains its own scope stack; descendants retain inner scopes.
+    fn finish_start(&self, source: usize, target: usize, starter: usize) -> PyResult<bool> {
+        let mut state = self.state.borrow_mut();
+        let parent = state.tasks.get(&starter)
+            .ok_or_else(|| PyRuntimeError::new_err("starter no longer active"))?;
+        let end = parent.scopes.iter().position(|&scope| scope == target)
+            .ok_or_else(|| PyRuntimeError::new_err("target nursery is not an ancestor"))?;
+        let prefix = parent.scopes[..=end].to_vec();
+        if !parent.scopes.contains(&source) || !state.scopes.contains_key(&source) {
+            return Err(PyRuntimeError::new_err("startup nursery is closed"));
+        }
+        if state.effective_cancel(starter).is_some() {
+            return Ok(false);
+        }
+        let current = state.current()?;
+        if current == starter || !state.task(current).scopes.contains(&source) {
+            return Err(PyRuntimeError::new_err("started() outside the startup subtree"));
+        }
+        let ids: Vec<_> = state.startup_members.get(&source)
+            .ok_or_else(|| PyRuntimeError::new_err("startup registration is closed"))?
+            .iter().copied().collect();
+        let mut moved = 0;
+        for &id in &ids {
+            let original = state.task(id).scopes.clone();
+            let pos = original.iter().position(|&scope| scope == source).unwrap();
+            let mut scopes = prefix.clone();
+            scopes.extend_from_slice(&original[pos + 1..]);
+            for scope in &original[..=pos] {
+                if let Some(members) = state.startup_members.get_mut(scope) {
+                    members.remove(&id);
+                }
+            }
+            for scope in &prefix {
+                if let Some(members) = state.startup_members.get_mut(scope) {
+                    members.insert(id);
+                }
+            }
+            let task = state.task_mut(id);
+            task.scopes = scopes;
+            if task.nursery == Some(source) {
+                task.nursery = Some(target);
+                moved += 1;
+            }
+        }
+        let old = state.scopes.get_mut(&source).unwrap();
+        old.children -= moved;
+        let waiter = if old.children == 0 { old.waiter } else { None };
+        state.scopes.get_mut(&target).unwrap().children += moved;
+        if let Some(waiter) = waiter {
+            state.enqueue(waiter);
+        }
+        // Only this transferred subtree could have gained cancellation.
+        for id in ids {
+            if matches!(state.task(id).status, Status::Sleeping | Status::Parked) {
+                if let Some(scope) = state.effective_cancel(id) {
+                    if state.task(id).status == Status::Parked {
+                        state.task_mut(id).park_cancel = Some(scope);
+                        state.clear_io(id);
+                    }
+                    state.enqueue(id);
+                }
+            }
+        }
+        Ok(true)
     }
 
     fn errors(&self, py: Python<'_>, group: usize) -> PyResult<Py<PyAny>> {
@@ -559,6 +645,13 @@ impl Runtime {
                         Err(error)
                     };
                     let task = state.tasks.remove(&id).expect("task exists");
+                    if !state.startup_members.is_empty() {
+                        for scope in &task.scopes {
+                            if let Some(members) = state.startup_members.get_mut(scope) {
+                                members.remove(&id);
+                            }
+                        }
+                    }
                     if let Some(group) = task.nursery {
                         if let Err(error) = result {
                             if !error.value(py).is_instance(cancelled)? {

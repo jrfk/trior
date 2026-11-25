@@ -10,6 +10,7 @@ proposal; reorder based on dependencies, benchmark results and owner direction.
 | 19 | Unix I/O reactor and partial socket API | Prototype complete |
 | 20 | epoll/kqueue and sparse/dense measurements | Linux verified; macOS type-check only |
 | 20.5 | OSS-oriented repository structure and package separation | Complete (license pending) |
+| 20.6 | Nursery.start / TaskStatus | Implemented and Linux-tested |
 | 21 | TCP connect, SocketStream, listeners | Next |
 | 22 | Async DNS and Happy Eyeballs | Planned |
 | 23 | Dense I/O optimization and registration reuse | Planned |

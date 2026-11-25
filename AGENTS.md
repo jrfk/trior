@@ -26,7 +26,8 @@ a subset of tests. Keep upstream Trio contributions separate from Trior.
 Read [docs/HANDOFF.md](docs/HANDOFF.md), [docs/ROADMAP.md](docs/ROADMAP.md),
 README.md and docs/research.md, plus archived results as needed before changing code.
 Stage 20 implementation: c783eb1; Stage 20.5 separates the active package
-from archived research (research/stage20). Begin with Stage 21 unless directed otherwise.
+from archived research (research/stage20). Stage 20.6 adds Nursery.start;
+next is Stage 21 unless directed otherwise.
 
 - Core: src/runtime.rs; src/reactor.rs; src/reactor/{epoll,kqueue,poll}.rs.
 - Public facade: python/trior/.
