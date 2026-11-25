@@ -1,0 +1,1085 @@
+{
+  "params": {
+    "active_20": {
+      "tasks": 600,
+      "active_tasks": 20,
+      "samples": 200,
+      "probe_period_s": 0.002,
+      "worker_period_ticks": 4,
+      "payload_terms": 64
+    },
+    "active_100": {
+      "tasks": 600,
+      "active_tasks": 100,
+      "samples": 200,
+      "probe_period_s": 0.002,
+      "worker_period_ticks": 4,
+      "payload_terms": 64
+    },
+    "active_599": {
+      "tasks": 600,
+      "active_tasks": 599,
+      "samples": 200,
+      "probe_period_s": 0.002,
+      "worker_period_ticks": 4,
+      "payload_terms": 64
+    }
+  },
+  "raw": [
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 74485250,
+      "wall_ns": 413597056,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 3284684,
+        "checkpoint": 820056
+      },
+      "pid": 5,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 0,
+      "occupancy_pct": 18.009134475077115
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 59654432,
+      "wall_ns": 416634742,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1355975,
+        "checkpoint": 351009
+      },
+      "pid": 7,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 0,
+      "occupancy_pct": 14.318160726020299
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 712338367,
+      "wall_ns": 728032384,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 611271128,
+        "checkpoint": 12988696
+      },
+      "pid": 9,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 0,
+      "occupancy_pct": 97.8443243261003
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 591143868,
+      "wall_ns": 595349320,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 478757675,
+        "checkpoint": 7031218
+      },
+      "pid": 11,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 0,
+      "occupancy_pct": 99.29361605720823
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 117535580,
+      "wall_ns": 411950802,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2176871,
+        "checkpoint": 1111737
+      },
+      "pid": 13,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 0,
+      "occupancy_pct": 28.53146041453756
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 138900707,
+      "wall_ns": 416881646,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2485036,
+        "checkpoint": 1293852
+      },
+      "pid": 15,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 0,
+      "occupancy_pct": 33.318978739591714
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 125600809,
+      "wall_ns": 412062520,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2373194,
+        "checkpoint": 1174903
+      },
+      "pid": 17,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 1,
+      "occupancy_pct": 30.481007833471484
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 136431786,
+      "wall_ns": 412532083,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2780683,
+        "checkpoint": 1158077
+      },
+      "pid": 19,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 1,
+      "occupancy_pct": 33.07180013923911
+    },
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 64292050,
+      "wall_ns": 411186368,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2685592,
+        "checkpoint": 495607
+      },
+      "pid": 21,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 1,
+      "occupancy_pct": 15.635744519623763
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 49957059,
+      "wall_ns": 411618233,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1358331,
+        "checkpoint": 288284
+      },
+      "pid": 23,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 1,
+      "occupancy_pct": 12.136745895801948
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 599157639,
+      "wall_ns": 603378774,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 485832434,
+        "checkpoint": 11348173
+      },
+      "pid": 25,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 1,
+      "occupancy_pct": 99.30041705444548
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 578705317,
+      "wall_ns": 583026535,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 465453383,
+        "checkpoint": 9042623
+      },
+      "pid": 27,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 1,
+      "occupancy_pct": 99.25882996045797
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 137894917,
+      "wall_ns": 412648151,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 4594996,
+        "checkpoint": 1583379
+      },
+      "pid": 29,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 2,
+      "occupancy_pct": 33.41706891593463
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 121248486,
+      "wall_ns": 410476986,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2235994,
+        "checkpoint": 932617
+      },
+      "pid": 31,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 2,
+      "occupancy_pct": 29.53843702214282
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 50462578,
+      "wall_ns": 411755255,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1722333,
+        "checkpoint": 531873
+      },
+      "pid": 33,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 2,
+      "occupancy_pct": 12.255478803786001
+    },
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 59662054,
+      "wall_ns": 413713532,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1447217,
+        "checkpoint": 347474
+      },
+      "pid": 35,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 2,
+      "occupancy_pct": 14.421102861097616
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 694004655,
+      "wall_ns": 700345271,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 583691736,
+        "checkpoint": 12670899
+      },
+      "pid": 37,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 2,
+      "occupancy_pct": 99.0946442758232
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 721370335,
+      "wall_ns": 725596571,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 608971284,
+        "checkpoint": 17123856
+      },
+      "pid": 39,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 2,
+      "occupancy_pct": 99.41755016921104
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 56999206,
+      "wall_ns": 413255301,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1429746,
+        "checkpoint": 452116
+      },
+      "pid": 41,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 3,
+      "occupancy_pct": 13.792734385275315
+    },
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 48464098,
+      "wall_ns": 412717510,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1234600,
+        "checkpoint": 275297
+      },
+      "pid": 43,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 3,
+      "occupancy_pct": 11.742680362652896
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 125862890,
+      "wall_ns": 412823737,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2326925,
+        "checkpoint": 1224387
+      },
+      "pid": 45,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 3,
+      "occupancy_pct": 30.48828803175143
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 124659889,
+      "wall_ns": 410703078,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2441027,
+        "checkpoint": 1167801
+      },
+      "pid": 47,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 3,
+      "occupancy_pct": 30.352801251711096
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 599173633,
+      "wall_ns": 607460283,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 490573193,
+        "checkpoint": 8742175
+      },
+      "pid": 49,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 3,
+      "occupancy_pct": 98.63585320194505
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 645393758,
+      "wall_ns": 649552667,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 531301964,
+        "checkpoint": 12411499
+      },
+      "pid": 51,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 3,
+      "occupancy_pct": 99.35972720746291
+    },
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 73097963,
+      "wall_ns": 413993736,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2079973,
+        "checkpoint": 346222
+      },
+      "pid": 53,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 4,
+      "occupancy_pct": 17.656779956689974
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 61166929,
+      "wall_ns": 412498428,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1494559,
+        "checkpoint": 398482
+      },
+      "pid": 55,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 4,
+      "occupancy_pct": 14.82840293393797
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 686736132,
+      "wall_ns": 690949313,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 571944439,
+        "checkpoint": 15214921
+      },
+      "pid": 57,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 4,
+      "occupancy_pct": 99.39023298515097
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 645450130,
+      "wall_ns": 648897135,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 534879032,
+        "checkpoint": 11488861
+      },
+      "pid": 59,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 4,
+      "occupancy_pct": 99.46879022666667
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 139331461,
+      "wall_ns": 413632467,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 5314430,
+        "checkpoint": 1908514
+      },
+      "pid": 61,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 4,
+      "occupancy_pct": 33.68484635902626
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 128443177,
+      "wall_ns": 411922411,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 3114355,
+        "checkpoint": 1104496
+      },
+      "pid": 63,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 4,
+      "occupancy_pct": 31.181400567205362
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 601030337,
+      "wall_ns": 605261495,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 487632275,
+        "checkpoint": 6541138
+      },
+      "pid": 65,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 5,
+      "occupancy_pct": 99.3009371924444
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 607589975,
+      "wall_ns": 611806746,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 495005152,
+        "checkpoint": 8472408
+      },
+      "pid": 67,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 5,
+      "occupancy_pct": 99.31076748866055
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 127435002,
+      "wall_ns": 412574978,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 3859939,
+        "checkpoint": 1193273
+      },
+      "pid": 69,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 5,
+      "occupancy_pct": 30.887719516523855
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 170444388,
+      "wall_ns": 415387169,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 3933809,
+        "checkpoint": 1683063
+      },
+      "pid": 71,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 5,
+      "occupancy_pct": 41.032655970170325
+    },
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 62610866,
+      "wall_ns": 413579514,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1451759,
+        "checkpoint": 471262
+      },
+      "pid": 73,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 5,
+      "occupancy_pct": 15.138773532191927
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 48536005,
+      "wall_ns": 410234541,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1443664,
+        "checkpoint": 414516
+      },
+      "pid": 75,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 5,
+      "occupancy_pct": 11.831281900760278
+    },
+    {
+      "case": "active_599",
+      "mode": "python",
+      "cpu_ns": 603455903,
+      "wall_ns": 610835469,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 492481069,
+        "checkpoint": 12780746
+      },
+      "pid": 77,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 6,
+      "occupancy_pct": 98.79188973553204
+    },
+    {
+      "case": "active_599",
+      "mode": "native-task",
+      "cpu_ns": 766167336,
+      "wall_ns": 770417425,
+      "counts": {
+        "operations": 29950,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 2556052800
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 652057677,
+        "checkpoint": 15145403
+      },
+      "pid": 79,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 6,
+      "occupancy_pct": 99.4483394505258
+    },
+    {
+      "case": "active_100",
+      "mode": "native-task",
+      "cpu_ns": 136363858,
+      "wall_ns": 411328703,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 4959938,
+        "checkpoint": 1272552
+      },
+      "pid": 81,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 6,
+      "occupancy_pct": 33.15204044975194
+    },
+    {
+      "case": "active_100",
+      "mode": "python",
+      "cpu_ns": 126272309,
+      "wall_ns": 411385730,
+      "counts": {
+        "operations": 5000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 426720000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 2285542,
+        "checkpoint": 1235246
+      },
+      "pid": 83,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 6,
+      "occupancy_pct": 30.69438237442023
+    },
+    {
+      "case": "active_20",
+      "mode": "python",
+      "cpu_ns": 53458049,
+      "wall_ns": 411827277,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 3552567,
+        "checkpoint": 281646
+      },
+      "pid": 85,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py",
+      "iteration": 6,
+      "occupancy_pct": 12.980696516612715
+    },
+    {
+      "case": "active_20",
+      "mode": "native-task",
+      "cpu_ns": 52639664,
+      "wall_ns": 413048802,
+      "counts": {
+        "operations": 1000,
+        "unit": "periodic_worker_steps",
+        "probe_count": 200,
+        "nominal_probe_span_s": 0.4,
+        "application_tasks": 600,
+        "observer_tasks": 1,
+        "completed_tasks": 600,
+        "checksum": 85344000
+      },
+      "latency_p99_ns": {
+        "timer_lateness": 1393180,
+        "checkpoint": 303859
+      },
+      "pid": 87,
+      "trio_source": "/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_core/_run.py",
+      "iteration": 6,
+      "occupancy_pct": 12.744175444915102
+    }
+  ],
+  "summary": {
+    "active_20": {
+      "paired_cpu_speedup_median": 0.836780212329583,
+      "paired_cpu_speedup_range": [
+        0.7752009850814074,
+        1.1761119746827848
+      ],
+      "python_cpu_ms": 53.458049,
+      "native_cpu_ms": 62.610866,
+      "python_occupancy_pct": 12.980696516612715,
+      "native_occupancy_pct": 15.138773532191927,
+      "python_timer_p99_ms": 1.443664,
+      "native_timer_p99_ms": 1.451759,
+      "python_checkpoint_p99_ms": 0.398482,
+      "native_checkpoint_p99_ms": 0.347474
+    },
+    "active_100": {
+      "paired_cpu_speedup_median": 0.9206125103427144,
+      "paired_cpu_speedup_range": [
+        0.7476632319510572,
+        1.084771213655047
+      ],
+      "python_cpu_ms": 125.600809,
+      "native_cpu_ms": 136.431786,
+      "python_occupancy_pct": 30.481007833471484,
+      "native_occupancy_pct": 33.15204044975194,
+      "python_timer_p99_ms": 2.373194,
+      "native_timer_p99_ms": 3.114355,
+      "python_checkpoint_p99_ms": 1.174903,
+      "native_checkpoint_p99_ms": 1.272552
+    },
+    "active_599": {
+      "paired_cpu_speedup_median": 0.9892038409619909,
+      "paired_cpu_speedup_range": [
+        0.7876293789167749,
+        1.2050169266071116
+      ],
+      "python_cpu_ms": 603.455903,
+      "native_cpu_ms": 645.393758,
+      "python_occupancy_pct": 99.0946442758232,
+      "native_occupancy_pct": 99.35972720746291,
+      "python_timer_p99_ms": 492.481069,
+      "native_timer_p99_ms": 531.301964,
+      "python_checkpoint_p99_ms": 12.670899,
+      "native_checkpoint_p99_ms": 11.488861
+    }
+  }
+}

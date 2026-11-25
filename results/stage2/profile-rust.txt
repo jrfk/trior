@@ -1,0 +1,33 @@
+         984904 function calls (984902 primitive calls) in 0.356 seconds
+
+   Ordered by: internal time
+   List reduced from 213 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      111    0.114    0.001    0.355    0.003 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:2712(unrolled_run)
+    60610    0.046    0.000    0.080    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:1897(reschedule)
+   120000    0.037    0.000    0.113    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:3017(checkpoint)
+   120002    0.034    0.000    0.069    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_traps.py:82(cancel_shielded_checkpoint)
+    60600    0.028    0.000    0.141    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/benchmarks/workloads.py:75(worker)
+    60610    0.025    0.000    0.025    0.000 <attrs generated methods outcome._impl.Value>:12(__init__)
+   183258    0.018    0.000    0.018    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/__init__.py:1148(__contains__)
+    60008    0.016    0.000    0.016    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/outcome/_impl.py:127(_set_unwrapped)
+    60007    0.011    0.000    0.028    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/outcome/_impl.py:179(unwrap)
+   120014    0.007    0.000    0.007    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_traps.py:65(_real_async_yield)
+    60015    0.007    0.000    0.007    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:2976(current_task)
+    60611    0.006    0.000    0.006    0.000 {method 'append' of 'collections.deque' objects}
+      603    0.002    0.000    0.004    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:1933(spawn_impl)
+      603    0.001    0.000    0.002    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:2011(task_exited)
+      609    0.000    0.000    0.001    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_util.py:290(_create)
+     2426    0.000    0.000    0.001    0.000 {built-in method builtins.isinstance}
+      603    0.000    0.000    0.001    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_util.py:59(coroutine_or_error)
+      602    0.000    0.000    0.001    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:1253(_child_finished)
+     1206    0.000    0.000    0.000    0.000 <frozen abc>:117(__instancecheck__)
+     1213    0.000    0.000    0.000    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:1617(_activate_cancel_status)
+     1818    0.000    0.000    0.000    0.000 {method 'remove' of 'set' objects}
+      600    0.000    0.000    0.004    0.000 /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/lib/python3.12/site-packages/trio/_core/_run.py:1340(start_soon)
+      603    0.000    0.000    0.000    0.000 <attrs generated methods trio._core._run.Task>:1(__init__)
+     1818    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+      110    0.000    0.000    0.000    0.000 {method 'poll' of 'select.epoll' objects}
+
+

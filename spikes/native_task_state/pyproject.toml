@@ -1,0 +1,7 @@
+[build-system]
+requires = ["maturin>=1.8,<2"]
+build-backend = "maturin"
+[project]
+name = "native-task-state-spike"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"

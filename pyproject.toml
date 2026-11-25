@@ -1,0 +1,19 @@
+[build-system]
+requires = ["maturin>=1.8,<2"]
+build-backend = "maturin"
+
+[project]
+name = "trior"
+version = "0.1.0"
+description = "Experimental Rust-powered structured concurrency runtime for Python"
+requires-python = ">=3.12,<3.13"
+dependencies = ["trio==0.35.0"]
+
+[tool.maturin]
+python-source = "python"
+module-name = "trio_rust_poc._native"
+python-packages = ["trior", "trio_rust_poc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

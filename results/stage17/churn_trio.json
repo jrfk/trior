@@ -1,0 +1,61 @@
+{
+  "mode": "trio",
+  "cpu_seconds": 2.951047684,
+  "snapshots": [
+    {
+      "completed": 100,
+      "rss_kib": 20080,
+      "native_counts": null
+    },
+    {
+      "completed": 10100,
+      "rss_kib": 20284,
+      "native_counts": null
+    },
+    {
+      "completed": 20100,
+      "rss_kib": 20288,
+      "native_counts": null
+    },
+    {
+      "completed": 30100,
+      "rss_kib": 20288,
+      "native_counts": null
+    },
+    {
+      "completed": 40100,
+      "rss_kib": 20292,
+      "native_counts": null
+    },
+    {
+      "completed": 50100,
+      "rss_kib": 20304,
+      "native_counts": null
+    },
+    {
+      "completed": 60100,
+      "rss_kib": 20304,
+      "native_counts": null
+    },
+    {
+      "completed": 70100,
+      "rss_kib": 20304,
+      "native_counts": null
+    },
+    {
+      "completed": 80100,
+      "rss_kib": 20304,
+      "native_counts": null
+    },
+    {
+      "completed": 90100,
+      "rss_kib": 20304,
+      "native_counts": null
+    },
+    {
+      "completed": 100000,
+      "rss_kib": 20304,
+      "native_counts": null
+    }
+  ]
+}

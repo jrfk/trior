@@ -1,0 +1,55 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "trio": "0.35.0",
+  "recv_count": 32000,
+  "cpu_ns_medians": {
+    "raw": 7251752,
+    "checkpoints": 111108640,
+    "stock": 145583605,
+    "inline": 130367394
+  },
+  "cpu_ns_rounds": [
+    {
+      "stock": 143588348,
+      "inline": 133112685,
+      "checkpoints": 110958968,
+      "raw": 6855524
+    },
+    {
+      "checkpoints": 113831998,
+      "stock": 142567684,
+      "raw": 7516575,
+      "inline": 130367394
+    },
+    {
+      "inline": 129428082,
+      "stock": 155401863,
+      "raw": 6727885,
+      "checkpoints": 105798477
+    },
+    {
+      "inline": 131584179,
+      "stock": 143777498,
+      "raw": 7612997,
+      "checkpoints": 111108640
+    },
+    {
+      "checkpoints": 109982200,
+      "stock": 145583605,
+      "inline": 129306602,
+      "raw": 7251752
+    },
+    {
+      "raw": 7206515,
+      "checkpoints": 111706486,
+      "stock": 148018065,
+      "inline": 128058671
+    },
+    {
+      "inline": 139719150,
+      "raw": 7719977,
+      "stock": 159651619,
+      "checkpoints": 114156449
+    }
+  ]
+}

@@ -1,0 +1,821 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "trio": "0.35.0",
+  "summary": {
+    "ready_recv": {
+      "stock": {
+        "cpu_ns": 138748211
+      },
+      "python": {
+        "cpu_ns": 114299940
+      },
+      "rust": {
+        "cpu_ns": 120452245
+      }
+    },
+    "blocked_pingpong": {
+      "stock": {
+        "cpu_ns": 80550608,
+        "wall_ns": 80552545,
+        "roundtrip_p99_ns": 53201,
+        "cpu_occupancy": 0.9999710835935582
+      },
+      "python": {
+        "cpu_ns": 75121245,
+        "wall_ns": 75123531,
+        "roundtrip_p99_ns": 48293,
+        "cpu_occupancy": 0.999969570120446
+      },
+      "rust": {
+        "cpu_ns": 76367161,
+        "wall_ns": 76397319,
+        "roundtrip_p99_ns": 45398,
+        "cpu_occupancy": 0.9999719935166252
+      }
+    },
+    "idle_read": {
+      "stock": {
+        "cpu_ns": 2506092,
+        "wall_ns": 252790855,
+        "cpu_occupancy": 0.009913697234023754
+      },
+      "python": {
+        "cpu_ns": 2311905,
+        "wall_ns": 252753892,
+        "cpu_occupancy": 0.009152617695455185
+      },
+      "rust": {
+        "cpu_ns": 2096335,
+        "wall_ns": 252393895,
+        "cpu_occupancy": 0.008305807079842402
+      }
+    }
+  },
+  "raw": {
+    "ready_recv": [
+      {
+        "rust": {
+          "cpu_ns": 120985175,
+          "operations": 32000
+        },
+        "python": {
+          "cpu_ns": 111022094,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 148925379,
+          "operations": 32000
+        }
+      },
+      {
+        "rust": {
+          "cpu_ns": 115722076,
+          "operations": 32000
+        },
+        "python": {
+          "cpu_ns": 114299940,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 141732172,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 109697451,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 121537612,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 136577925,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 114466106,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 117161478,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 136288386,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 110083212,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 133194333,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 117715721,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 110331150,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 138651298,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 120315973,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 124997879,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 126102956,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 146327871,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 117313304,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 136119386,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 124202030,
+          "operations": 32000
+        }
+      },
+      {
+        "python": {
+          "cpu_ns": 119695954,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 120452245,
+          "operations": 32000
+        },
+        "stock": {
+          "cpu_ns": 138748211,
+          "operations": 32000
+        }
+      },
+      {
+        "stock": {
+          "cpu_ns": 138813107,
+          "operations": 32000
+        },
+        "python": {
+          "cpu_ns": 114831528,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 140649695,
+          "operations": 32000
+        }
+      },
+      {
+        "stock": {
+          "cpu_ns": 139153531,
+          "operations": 32000
+        },
+        "python": {
+          "cpu_ns": 111801029,
+          "operations": 32000
+        },
+        "rust": {
+          "cpu_ns": 115494419,
+          "operations": 32000
+        }
+      }
+    ],
+    "blocked_pingpong": [
+      {
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75816204,
+          "wall_ns": 75818181,
+          "cpu_occupancy": 0.9999739244601502,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 63766
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 86053772,
+          "wall_ns": 86056292,
+          "cpu_occupancy": 0.999970716841948,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 71758
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 80121763,
+          "wall_ns": 80123722,
+          "cpu_occupancy": 0.9999755503120537,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 53320
+        }
+      },
+      {
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75064380,
+          "wall_ns": 75077732,
+          "cpu_occupancy": 0.9998221576538833,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 48293
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 100223811,
+          "wall_ns": 100225881,
+          "cpu_occupancy": 0.9999793466519891,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 114793
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 84381144,
+          "wall_ns": 84382715,
+          "cpu_occupancy": 0.999981382443075,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 81963
+        }
+      },
+      {
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 120162783,
+          "wall_ns": 128675152,
+          "cpu_occupancy": 0.9338460544425857,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 160361
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75301883,
+          "wall_ns": 75303992,
+          "cpu_occupancy": 0.9999719935166252,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 38698
+        },
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75485094,
+          "wall_ns": 75497864,
+          "cpu_occupancy": 0.9998308561418373,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 49214
+        }
+      },
+      {
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75121245,
+          "wall_ns": 75123531,
+          "cpu_occupancy": 0.999969570120446,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 45698
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 76000898,
+          "wall_ns": 76002513,
+          "cpu_occupancy": 0.9999787507026248,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 45398
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 76920441,
+          "wall_ns": 76922239,
+          "cpu_occupancy": 0.9999766257453843,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 37837
+        }
+      },
+      {
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 79241619,
+          "wall_ns": 79243044,
+          "cpu_occupancy": 0.9999820173490559,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 44167
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 76367161,
+          "wall_ns": 76397319,
+          "cpu_occupancy": 0.9996052479276138,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 48042
+        },
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 73580722,
+          "wall_ns": 73582400,
+          "cpu_occupancy": 0.9999771956337385,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 40110
+        }
+      },
+      {
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 76459728,
+          "wall_ns": 76469668,
+          "cpu_occupancy": 0.9998700138203817,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 42474
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 78986502,
+          "wall_ns": 78988992,
+          "cpu_occupancy": 0.9999684766201347,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 44927
+        },
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 112884071,
+          "wall_ns": 119520754,
+          "cpu_occupancy": 0.9444725474205091,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 167342
+        }
+      },
+      {
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 74201563,
+          "wall_ns": 74203094,
+          "cpu_occupancy": 0.9999793674371583,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 46861
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 77020679,
+          "wall_ns": 77031113,
+          "cpu_occupancy": 0.999864548237801,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 49675
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 80574764,
+          "wall_ns": 80577094,
+          "cpu_occupancy": 0.9999710835935582,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 45729
+        }
+      },
+      {
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75020626,
+          "wall_ns": 75022318,
+          "cpu_occupancy": 0.9999774467112573,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 36054
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 77318610,
+          "wall_ns": 77340850,
+          "cpu_occupancy": 0.9997124417432702,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 36815
+        },
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 72115963,
+          "wall_ns": 72117914,
+          "cpu_occupancy": 0.999972947082191,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 34452
+        }
+      },
+      {
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 74106291,
+          "wall_ns": 74115723,
+          "cpu_occupancy": 0.9998727395535223,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 37647
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75971255,
+          "wall_ns": 75973039,
+          "cpu_occupancy": 0.9999765179855449,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 41773
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 81325818,
+          "wall_ns": 81342216,
+          "cpu_occupancy": 0.9997984072624724,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 54773
+        }
+      },
+      {
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75066924,
+          "wall_ns": 75068668,
+          "cpu_occupancy": 0.9999767679373237,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 44847
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 115034591,
+          "wall_ns": 118279386,
+          "cpu_occupancy": 0.9725666905305038,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 221744
+        },
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 76527758,
+          "wall_ns": 76541449,
+          "cpu_occupancy": 0.9998211295947638,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 54712
+        }
+      },
+      {
+        "python": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 75661566,
+          "wall_ns": 75663847,
+          "cpu_occupancy": 0.999969853502162,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 55483
+        },
+        "rust": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 81811357,
+          "wall_ns": 81822389,
+          "cpu_occupancy": 0.999865171377482,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 60061
+        },
+        "stock": {
+          "case": "blocked_pingpong",
+          "cpu_ns": 80550608,
+          "wall_ns": 80552545,
+          "cpu_occupancy": 0.999975953584086,
+          "operations": 4000,
+          "bytes": 16000,
+          "roundtrip_p99_ns": 53201
+        }
+      }
+    ],
+    "idle_read": [
+      {
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 1400835,
+          "wall_ns": 251688492,
+          "cpu_occupancy": 0.005565749108624323,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 1256872,
+          "wall_ns": 251543007,
+          "cpu_occupancy": 0.0049966485452724195,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 2202123,
+          "wall_ns": 252753892,
+          "cpu_occupancy": 0.008712518658268574,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 1641292,
+          "wall_ns": 251921156,
+          "cpu_occupancy": 0.00651510189164105,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 1696643,
+          "wall_ns": 251956295,
+          "cpu_occupancy": 0.006733878191056905,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 1213327,
+          "wall_ns": 251516597,
+          "cpu_occupancy": 0.004824043480518306,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 2070298,
+          "wall_ns": 252350650,
+          "cpu_occupancy": 0.008204052575255898,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 5698452,
+          "wall_ns": 255977850,
+          "cpu_occupancy": 0.02226150426687309,
+          "operations": 1,
+          "bytes": 2
+        },
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 23596289,
+          "wall_ns": 273870625,
+          "cpu_occupancy": 0.0861585246683539,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 2709174,
+          "wall_ns": 253160514,
+          "cpu_occupancy": 0.010701408198278504,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 2502707,
+          "wall_ns": 252790874,
+          "cpu_occupancy": 0.009900305973862015,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 3028828,
+          "wall_ns": 253314277,
+          "cpu_occupancy": 0.011956799418771015,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 3476240,
+          "wall_ns": 253756106,
+          "cpu_occupancy": 0.01369913833718744,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 15235753,
+          "wall_ns": 265521038,
+          "cpu_occupancy": 0.05738058691982064,
+          "operations": 1,
+          "bytes": 2
+        },
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 4086204,
+          "wall_ns": 254567750,
+          "cpu_occupancy": 0.01605153834293621,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 2600473,
+          "wall_ns": 252878381,
+          "cpu_occupancy": 0.010283492759311837,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 3982390,
+          "wall_ns": 254284296,
+          "cpu_occupancy": 0.015661171620287555,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 2873978,
+          "wall_ns": 253144086,
+          "cpu_occupancy": 0.011353131117588108,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 2311905,
+          "wall_ns": 252594949,
+          "cpu_occupancy": 0.009152617695455185,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 2506092,
+          "wall_ns": 252790855,
+          "cpu_occupancy": 0.009913697234023754,
+          "operations": 1,
+          "bytes": 2
+        },
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 1584186,
+          "wall_ns": 251855804,
+          "cpu_occupancy": 0.006290051588408103,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 1605488,
+          "wall_ns": 251889591,
+          "cpu_occupancy": 0.006373776675829372,
+          "operations": 1,
+          "bytes": 2
+        },
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 1824523,
+          "wall_ns": 252110271,
+          "cpu_occupancy": 0.00723700384265582,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 2706040,
+          "wall_ns": 253002502,
+          "cpu_occupancy": 0.01069570450334914,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 16730797,
+          "wall_ns": 267022718,
+          "cpu_occupancy": 0.06265682982074956,
+          "operations": 1,
+          "bytes": 2
+        },
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 2235492,
+          "wall_ns": 252535356,
+          "cpu_occupancy": 0.008852194145836751,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 1749392,
+          "wall_ns": 252022311,
+          "cpu_occupancy": 0.00694141718270332,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 1567372,
+          "wall_ns": 251842144,
+          "cpu_occupancy": 0.006223628718789814,
+          "operations": 1,
+          "bytes": 2
+        },
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 2096335,
+          "wall_ns": 252393895,
+          "cpu_occupancy": 0.008305807079842402,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 21030256,
+          "wall_ns": 271358254,
+          "cpu_occupancy": 0.07749996799434006,
+          "operations": 1,
+          "bytes": 2
+        }
+      },
+      {
+        "stock": {
+          "case": "idle_read",
+          "cpu_ns": 1830522,
+          "wall_ns": 252111740,
+          "cpu_occupancy": 0.007260756678764742,
+          "operations": 1,
+          "bytes": 2
+        },
+        "python": {
+          "case": "idle_read",
+          "cpu_ns": 1313255,
+          "wall_ns": 251601386,
+          "cpu_occupancy": 0.005219585714046901,
+          "operations": 1,
+          "bytes": 2
+        },
+        "rust": {
+          "case": "idle_read",
+          "cpu_ns": 1612219,
+          "wall_ns": 251917787,
+          "cpu_occupancy": 0.006399782322635281,
+          "operations": 1,
+          "bytes": 2
+        }
+      }
+    ]
+  }
+}

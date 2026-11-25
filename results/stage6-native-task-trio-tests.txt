@@ -1,0 +1,95 @@
+
+==================================== ERRORS ====================================
+__ ERROR collecting spikes/native_task_state/overlay/trio/_tests/test_dtls.py __
+ImportError while importing test module '/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/test_dtls.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spikes/native_task_state/overlay/trio/_tests/test_dtls.py:17: in <module>
+    maybe_ignore_import_error(error)
+spikes/native_task_state/overlay/trio/_tests/pytest_plugin.py:60: in maybe_ignore_import_error
+    raise error
+spikes/native_task_state/overlay/trio/_tests/test_dtls.py:14: in <module>
+    import trustme
+E   ModuleNotFoundError: No module named 'trustme'
+_ ERROR collecting spikes/native_task_state/overlay/trio/_tests/test_highlevel_ssl_helpers.py _
+ImportError while importing test module '/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/test_highlevel_ssl_helpers.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spikes/native_task_state/overlay/trio/_tests/test_highlevel_ssl_helpers.py:19: in <module>
+    from .test_ssl import SERVER_CTX, client_ctx  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spikes/native_task_state/overlay/trio/_tests/test_ssl.py:24: in <module>
+    maybe_ignore_import_error(error)
+spikes/native_task_state/overlay/trio/_tests/pytest_plugin.py:60: in maybe_ignore_import_error
+    raise error
+spikes/native_task_state/overlay/trio/_tests/test_ssl.py:21: in <module>
+    import trustme
+E   ModuleNotFoundError: No module named 'trustme'
+__ ERROR collecting spikes/native_task_state/overlay/trio/_tests/test_ssl.py ___
+ImportError while importing test module '/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/test_ssl.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spikes/native_task_state/overlay/trio/_tests/test_ssl.py:24: in <module>
+    maybe_ignore_import_error(error)
+spikes/native_task_state/overlay/trio/_tests/pytest_plugin.py:60: in maybe_ignore_import_error
+    raise error
+spikes/native_task_state/overlay/trio/_tests/test_ssl.py:21: in <module>
+    import trustme
+E   ModuleNotFoundError: No module named 'trustme'
+_ ERROR collecting spikes/native_task_state/overlay/trio/_tests/tools/test_gen_exports.py _
+ImportError while importing test module '/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/tools/test_gen_exports.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spikes/native_task_state/overlay/trio/_tests/tools/test_gen_exports.py:14: in <module>
+    maybe_ignore_import_error(error)
+spikes/native_task_state/overlay/trio/_tests/pytest_plugin.py:60: in maybe_ignore_import_error
+    raise error
+spikes/native_task_state/overlay/trio/_tests/tools/test_gen_exports.py:11: in <module>
+    import astor  # noqa: F401
+    ^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'astor'
+_ ERROR collecting spikes/native_task_state/overlay/trio/_tests/tools/test_sync_requirements.py _
+ImportError while importing test module '/workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/tools/test_sync_requirements.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spikes/native_task_state/overlay/trio/_tests/tools/test_sync_requirements.py:11: in <module>
+    maybe_ignore_import_error(error)
+spikes/native_task_state/overlay/trio/_tests/pytest_plugin.py:60: in maybe_ignore_import_error
+    raise error
+spikes/native_task_state/overlay/trio/_tests/tools/test_sync_requirements.py:9: in <module>
+    import yaml  # noqa: F401
+    ^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'yaml'
+=============================== warnings summary ===============================
+spikes/native_task_state/overlay/trio/_tests/test_exports.py:123
+  /workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/test_exports.py:123: PytestUnknownMarkWarning: Unknown pytest.mark.redistributors_should_skip - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.redistributors_should_skip
+
+spikes/native_task_state/overlay/trio/_tests/test_exports.py:255
+  /workspace/scratch/fc94663edac4/trio-rust-poc/spikes/native_task_state/overlay/trio/_tests/test_exports.py:255: PytestUnknownMarkWarning: Unknown pytest.mark.redistributors_should_skip - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.redistributors_should_skip
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR spikes/native_task_state/overlay/trio/_tests/test_dtls.py
+ERROR spikes/native_task_state/overlay/trio/_tests/test_highlevel_ssl_helpers.py
+ERROR spikes/native_task_state/overlay/trio/_tests/test_ssl.py
+ERROR spikes/native_task_state/overlay/trio/_tests/tools/test_gen_exports.py
+ERROR spikes/native_task_state/overlay/trio/_tests/tools/test_sync_requirements.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 5 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 warnings, 5 errors in 1.03s

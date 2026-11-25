@@ -1,0 +1,140 @@
+{
+  "checkpoint_600": {
+    "params": {
+      "tasks": 600,
+      "steps": 100
+    },
+    "runs": [
+      {
+        "prepare_ns": 16433521,
+        "context_run_ns": 62466117,
+        "dispatch_ns": 43195040,
+        "finish_ns": 10742276,
+        "task_steps": 60610,
+        "cpu_ns": 140809560,
+        "wall_ns": 141037638,
+        "operations": 60000
+      },
+      {
+        "prepare_ns": 17926521,
+        "context_run_ns": 63053867,
+        "dispatch_ns": 41727321,
+        "finish_ns": 10323583,
+        "task_steps": 60610,
+        "cpu_ns": 140860509,
+        "wall_ns": 140854137,
+        "operations": 60000
+      },
+      {
+        "prepare_ns": 17259030,
+        "context_run_ns": 64778371,
+        "dispatch_ns": 43925713,
+        "finish_ns": 10900083,
+        "task_steps": 60610,
+        "cpu_ns": 145291570,
+        "wall_ns": 145364148,
+        "operations": 60000
+      },
+      {
+        "prepare_ns": 19865543,
+        "context_run_ns": 67657842,
+        "dispatch_ns": 46098559,
+        "finish_ns": 12629773,
+        "task_steps": 60610,
+        "cpu_ns": 156899542,
+        "wall_ns": 156893635,
+        "operations": 60000
+      },
+      {
+        "prepare_ns": 16427132,
+        "context_run_ns": 60765510,
+        "dispatch_ns": 41569657,
+        "finish_ns": 10788105,
+        "task_steps": 60610,
+        "cpu_ns": 137427839,
+        "wall_ns": 137708490,
+        "operations": 60000
+      }
+    ],
+    "median": {
+      "prepare_ns": 17259030,
+      "context_run_ns": 63053867,
+      "dispatch_ns": 43195040,
+      "finish_ns": 10788105,
+      "task_steps": 60610,
+      "cpu_ns": 140860509,
+      "wall_ns": 141037638
+    }
+  },
+  "mixed_600": {
+    "params": {
+      "tasks": 600,
+      "active_tasks": 20,
+      "samples": 200,
+      "probe_period_s": 0.002,
+      "worker_period_ticks": 4,
+      "payload_terms": 64
+    },
+    "runs": [
+      {
+        "prepare_ns": 1671905,
+        "context_run_ns": 28804903,
+        "dispatch_ns": 4370261,
+        "finish_ns": 1458703,
+        "task_steps": 4192,
+        "cpu_ns": 55217984,
+        "wall_ns": 412720821,
+        "operations": 1000
+      },
+      {
+        "prepare_ns": 1504198,
+        "context_run_ns": 26861555,
+        "dispatch_ns": 4483923,
+        "finish_ns": 1263422,
+        "task_steps": 4192,
+        "cpu_ns": 51920895,
+        "wall_ns": 412975056,
+        "operations": 1000
+      },
+      {
+        "prepare_ns": 2030406,
+        "context_run_ns": 34989163,
+        "dispatch_ns": 5112631,
+        "finish_ns": 919411,
+        "task_steps": 4192,
+        "cpu_ns": 64899573,
+        "wall_ns": 413255318,
+        "operations": 1000
+      },
+      {
+        "prepare_ns": 1813975,
+        "context_run_ns": 34255554,
+        "dispatch_ns": 6506092,
+        "finish_ns": 977347,
+        "task_steps": 4192,
+        "cpu_ns": 59536560,
+        "wall_ns": 417459465,
+        "operations": 1000
+      },
+      {
+        "prepare_ns": 1921922,
+        "context_run_ns": 31570250,
+        "dispatch_ns": 5489784,
+        "finish_ns": 829241,
+        "task_steps": 4192,
+        "cpu_ns": 58931206,
+        "wall_ns": 414869247,
+        "operations": 1000
+      }
+    ],
+    "median": {
+      "prepare_ns": 1813975,
+      "context_run_ns": 31570250,
+      "dispatch_ns": 5112631,
+      "finish_ns": 977347,
+      "task_steps": 4192,
+      "cpu_ns": 58931206,
+      "wall_ns": 413255318
+    }
+  }
+}

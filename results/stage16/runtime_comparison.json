@@ -1,0 +1,657 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "trio": "0.35.0",
+  "raw": {
+    "checkpoint": [
+      {
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 27316279,
+          "wall_ns": 27317604,
+          "cpu_occupancy": 0.9999514964782417,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 109177937,
+          "wall_ns": 109420590,
+          "cpu_occupancy": 0.9977823826393186,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 107361613,
+          "wall_ns": 107361506,
+          "cpu_occupancy": 1.0000009966328154,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 26602406,
+          "wall_ns": 26603475,
+          "cpu_occupancy": 0.9999598172795096,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 26934120,
+          "wall_ns": 26934716,
+          "cpu_occupancy": 0.999977872423084,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 105230461,
+          "wall_ns": 105239078,
+          "cpu_occupancy": 0.9999181197691602,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 166026574,
+          "wall_ns": 166026050,
+          "cpu_occupancy": 1.0000031561312215,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 26827281,
+          "wall_ns": 26827317,
+          "cpu_occupancy": 0.9999986580842206,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 33390089,
+          "wall_ns": 33391102,
+          "cpu_occupancy": 0.999969662576575,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 135108034,
+          "wall_ns": 135118882,
+          "cpu_occupancy": 0.9999197151438834,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 26018027,
+          "wall_ns": 26018418,
+          "cpu_occupancy": 0.9999849721839352,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 109943797,
+          "wall_ns": 109943254,
+          "cpu_occupancy": 1.000004938911486,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 60000,
+          "cpu_ns": 27616496,
+          "wall_ns": 27616959,
+          "cpu_occupancy": 0.9999832349390821,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 60000,
+          "cpu_ns": 117979018,
+          "wall_ns": 117978652,
+          "cpu_occupancy": 1.0000031022561606,
+          "timer_p99_ms": null
+        }
+      }
+    ],
+    "timers": [
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 15396448,
+          "wall_ns": 202115784,
+          "cpu_occupancy": 0.07617637621018257,
+          "timer_p99_ms": 0.426978000177769
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 207357183,
+          "wall_ns": 218721061,
+          "cpu_occupancy": 0.9480439700317657,
+          "timer_p99_ms": 12.52054400003999
+        }
+      },
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 15442347,
+          "wall_ns": 202130224,
+          "cpu_occupancy": 0.07639801062111325,
+          "timer_p99_ms": 0.4377810001301441
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 209647532,
+          "wall_ns": 216805750,
+          "cpu_occupancy": 0.9669832649733691,
+          "timer_p99_ms": 16.59652900019637
+        }
+      },
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 15451794,
+          "wall_ns": 202057768,
+          "cpu_occupancy": 0.07647216017945917,
+          "timer_p99_ms": 1.1999770001125398
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 200886944,
+          "wall_ns": 218575915,
+          "cpu_occupancy": 0.9190717284655997,
+          "timer_p99_ms": 12.070086000051106
+        }
+      },
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 15500482,
+          "wall_ns": 202336822,
+          "cpu_occupancy": 0.07660732162730123,
+          "timer_p99_ms": 0.9724650001317059
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 203623736,
+          "wall_ns": 211823141,
+          "cpu_occupancy": 0.9612912689270338,
+          "timer_p99_ms": 11.139907000085714
+        }
+      },
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 15321920,
+          "wall_ns": 202038418,
+          "cpu_occupancy": 0.07583666587609095,
+          "timer_p99_ms": 0.5718550000892719
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 200610562,
+          "wall_ns": 216105505,
+          "cpu_occupancy": 0.9282991749793694,
+          "timer_p99_ms": 12.531507000062447
+        }
+      },
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 14958681,
+          "wall_ns": 202815984,
+          "cpu_occupancy": 0.07375494132651793,
+          "timer_p99_ms": 0.34070400016616986
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 203715423,
+          "wall_ns": 211952851,
+          "cpu_occupancy": 0.9611355640599522,
+          "timer_p99_ms": 14.50435700013486
+        }
+      },
+      {
+        "rust": {
+          "count": 12000,
+          "cpu_ns": 14607484,
+          "wall_ns": 202217947,
+          "cpu_occupancy": 0.07223633815251819,
+          "timer_p99_ms": 0.2325400001836897
+        },
+        "trio": {
+          "count": 12000,
+          "cpu_ns": 197441576,
+          "wall_ns": 220391117,
+          "cpu_occupancy": 0.8958690290589162,
+          "timer_p99_ms": 14.198248000070635
+        }
+      }
+    ],
+    "mixed": [
+      {
+        "rust": {
+          "count": 400,
+          "cpu_ns": 6565454,
+          "wall_ns": 203175378,
+          "cpu_occupancy": 0.03231422067294001,
+          "timer_p99_ms": 2.608538000004046
+        },
+        "trio": {
+          "count": 400,
+          "cpu_ns": 17990222,
+          "wall_ns": 210411270,
+          "cpu_occupancy": 0.08550027762296193,
+          "timer_p99_ms": 1.3838350000696664
+        }
+      },
+      {
+        "trio": {
+          "count": 400,
+          "cpu_ns": 17247621,
+          "wall_ns": 209672104,
+          "cpu_occupancy": 0.08225997007212747,
+          "timer_p99_ms": 1.368994000188195
+        },
+        "rust": {
+          "count": 400,
+          "cpu_ns": 2725397,
+          "wall_ns": 201741255,
+          "cpu_occupancy": 0.013509368720839968,
+          "timer_p99_ms": 0.1742650001688162
+        }
+      },
+      {
+        "trio": {
+          "count": 400,
+          "cpu_ns": 17115470,
+          "wall_ns": 208713052,
+          "cpu_occupancy": 0.08200479000230422,
+          "timer_p99_ms": 1.4789840001299126
+        },
+        "rust": {
+          "count": 400,
+          "cpu_ns": 2996382,
+          "wall_ns": 201972188,
+          "cpu_occupancy": 0.014835616872160637,
+          "timer_p99_ms": 0.14581100009536385
+        }
+      },
+      {
+        "rust": {
+          "count": 400,
+          "cpu_ns": 7035293,
+          "wall_ns": 203466743,
+          "cpu_occupancy": 0.03457711514063013,
+          "timer_p99_ms": 2.656291000107558
+        },
+        "trio": {
+          "count": 400,
+          "cpu_ns": 16792205,
+          "wall_ns": 208165540,
+          "cpu_occupancy": 0.08066755429356848,
+          "timer_p99_ms": 1.552651999986665
+        }
+      },
+      {
+        "rust": {
+          "count": 400,
+          "cpu_ns": 2693810,
+          "wall_ns": 201772763,
+          "cpu_occupancy": 0.013350711760833646,
+          "timer_p99_ms": 0.21052200014537448
+        },
+        "trio": {
+          "count": 400,
+          "cpu_ns": 17006112,
+          "wall_ns": 208446047,
+          "cpu_occupancy": 0.08158519791934457,
+          "timer_p99_ms": 1.3417060000051606
+        }
+      },
+      {
+        "rust": {
+          "count": 400,
+          "cpu_ns": 3067075,
+          "wall_ns": 202216029,
+          "cpu_occupancy": 0.015167318907246468,
+          "timer_p99_ms": 0.14165800018872687
+        },
+        "trio": {
+          "count": 400,
+          "cpu_ns": 17891011,
+          "wall_ns": 210345843,
+          "cpu_occupancy": 0.08505521547197868,
+          "timer_p99_ms": 1.3541200000872777
+        }
+      },
+      {
+        "rust": {
+          "count": 400,
+          "cpu_ns": 7096993,
+          "wall_ns": 206039868,
+          "cpu_occupancy": 0.03444475609933899,
+          "timer_p99_ms": 2.7531950001389305
+        },
+        "trio": {
+          "count": 400,
+          "cpu_ns": 18623690,
+          "wall_ns": 211028405,
+          "cpu_occupancy": 0.08825205308261701,
+          "timer_p99_ms": 1.3279960001568725
+        }
+      }
+    ],
+    "idle": [
+      {
+        "trio": {
+          "count": 0,
+          "cpu_ns": 17288824,
+          "wall_ns": 267563509,
+          "cpu_occupancy": 0.06461577688458257,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 0,
+          "cpu_ns": 1729685,
+          "wall_ns": 251480747,
+          "cpu_occupancy": 0.00687800167859371,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 0,
+          "cpu_ns": 14517819,
+          "wall_ns": 264812076,
+          "cpu_occupancy": 0.0548231002879189,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 0,
+          "cpu_ns": 1684968,
+          "wall_ns": 251478374,
+          "cpu_occupancy": 0.00670025009784738,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 0,
+          "cpu_ns": 6670069,
+          "wall_ns": 256395031,
+          "cpu_occupancy": 0.02601481383623226,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 0,
+          "cpu_ns": 9452009,
+          "wall_ns": 259732221,
+          "cpu_occupancy": 0.036391360931688176,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 0,
+          "cpu_ns": 1832788,
+          "wall_ns": 251600163,
+          "cpu_occupancy": 0.007284526282282258,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 0,
+          "cpu_ns": 8980608,
+          "wall_ns": 259252144,
+          "cpu_occupancy": 0.034640438691994,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 0,
+          "cpu_ns": 11211158,
+          "wall_ns": 260494127,
+          "cpu_occupancy": 0.04303804515331741,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 0,
+          "cpu_ns": 4180402,
+          "wall_ns": 253987775,
+          "cpu_occupancy": 0.016459067764186684,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 0,
+          "cpu_ns": 9835070,
+          "wall_ns": 260114249,
+          "cpu_occupancy": 0.03781057761276277,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 0,
+          "cpu_ns": 1748041,
+          "wall_ns": 251492085,
+          "cpu_occupancy": 0.006950679978656187,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 0,
+          "cpu_ns": 9739958,
+          "wall_ns": 260034957,
+          "cpu_occupancy": 0.037456340918040495,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 0,
+          "cpu_ns": 1678347,
+          "wall_ns": 251411811,
+          "cpu_occupancy": 0.00667568875672273,
+          "timer_p99_ms": null
+        }
+      }
+    ],
+    "deadlines": [
+      {
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 28249102,
+          "wall_ns": 105075844,
+          "cpu_occupancy": 0.2688448736133873,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 101391713,
+          "wall_ns": 129492131,
+          "cpu_occupancy": 0.7829951690269118,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 30234597,
+          "wall_ns": 107757060,
+          "cpu_occupancy": 0.28058112387253326,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 94559170,
+          "wall_ns": 126780495,
+          "cpu_occupancy": 0.7458495094217766,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 26736885,
+          "wall_ns": 104615300,
+          "cpu_occupancy": 0.25557337215493336,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 99565386,
+          "wall_ns": 131891216,
+          "cpu_occupancy": 0.7549053607937014,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 105736215,
+          "wall_ns": 131897534,
+          "cpu_occupancy": 0.8016542219811327,
+          "timer_p99_ms": null
+        },
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 26434836,
+          "wall_ns": 104520831,
+          "cpu_occupancy": 0.2529145218908564,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 28423340,
+          "wall_ns": 106313750,
+          "cpu_occupancy": 0.2673533762095684,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 112067909,
+          "wall_ns": 135096530,
+          "cpu_occupancy": 0.8295395077875057,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 31185712,
+          "wall_ns": 108143504,
+          "cpu_occupancy": 0.2883734190821115,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 104466485,
+          "wall_ns": 142725283,
+          "cpu_occupancy": 0.7319409904410559,
+          "timer_p99_ms": null
+        }
+      },
+      {
+        "rust": {
+          "count": 6000,
+          "cpu_ns": 28653473,
+          "wall_ns": 104938410,
+          "cpu_occupancy": 0.27305038260061304,
+          "timer_p99_ms": null
+        },
+        "trio": {
+          "count": 6000,
+          "cpu_ns": 108766285,
+          "wall_ns": 144791249,
+          "cpu_occupancy": 0.751193775529901,
+          "timer_p99_ms": null
+        }
+      }
+    ]
+  },
+  "summary": {
+    "checkpoint": {
+      "trio": {
+        "count": 60000,
+        "cpu_ns": 109943797,
+        "wall_ns": 109943254,
+        "cpu_occupancy": 1.0000009966328154
+      },
+      "rust": {
+        "count": 60000,
+        "cpu_ns": 26934120,
+        "wall_ns": 26934716,
+        "cpu_occupancy": 0.999977872423084
+      },
+      "cpu_speedup": 4.046351418829701
+    },
+    "timers": {
+      "trio": {
+        "count": 12000,
+        "cpu_ns": 203623736,
+        "wall_ns": 216805750,
+        "cpu_occupancy": 0.9480439700317657,
+        "timer_p99_ms": 12.531507000062447
+      },
+      "rust": {
+        "count": 12000,
+        "cpu_ns": 15396448,
+        "wall_ns": 202130224,
+        "cpu_occupancy": 0.07617637621018257,
+        "timer_p99_ms": 0.4377810001301441
+      },
+      "cpu_speedup": 13.467858495673807
+    },
+    "mixed": {
+      "trio": {
+        "count": 400,
+        "cpu_ns": 17247621,
+        "wall_ns": 209672104,
+        "cpu_occupancy": 0.08225997007212747,
+        "timer_p99_ms": 1.368994000188195
+      },
+      "rust": {
+        "count": 400,
+        "cpu_ns": 3067075,
+        "wall_ns": 202216029,
+        "cpu_occupancy": 0.015167318907246468,
+        "timer_p99_ms": 0.21052200014537448
+      },
+      "cpu_speedup": 5.71204539341112
+    },
+    "idle": {
+      "trio": {
+        "count": 0,
+        "cpu_ns": 9835070,
+        "wall_ns": 260114249,
+        "cpu_occupancy": 0.03781057761276277
+      },
+      "rust": {
+        "count": 0,
+        "cpu_ns": 1748041,
+        "wall_ns": 251492085,
+        "cpu_occupancy": 0.006950679978656187
+      },
+      "cpu_speedup": 5.6263382838274385
+    },
+    "deadlines": {
+      "trio": {
+        "count": 6000,
+        "cpu_ns": 104466485,
+        "wall_ns": 131897534,
+        "cpu_occupancy": 0.7549053607937014
+      },
+      "rust": {
+        "count": 6000,
+        "cpu_ns": 28423340,
+        "wall_ns": 105075844,
+        "cpu_occupancy": 0.2688448736133873
+      },
+      "cpu_speedup": 3.723896257922342
+    }
+  }
+}

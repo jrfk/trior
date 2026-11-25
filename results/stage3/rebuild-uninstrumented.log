@@ -1,0 +1,10 @@
+📦 Including license file `LICENSE.Trio`
+🍹 Building a mixed python/rust project
+🐍 Found CPython 3.12 at /workspace/scratch/fc94663edac4/trio-rust-poc/.venv/bin/python
+🔗 Found pyo3 bindings
+Checked 1 package in 1ms
+   Compiling trio-rust-poc v0.1.0 (/workspace/scratch/fc94663edac4/trio-rust-poc)
+    Finished `release` profile [optimized] target(s) in 4.24s
+📦 Built wheel for CPython 3.12 to /tmp/.tmpIm40UD/trio_rust_poc-0.1.0-cp312-cp312-linux_x86_64.whl
+✏️ Setting installed package as editable
+🛠 Installed trio-rust-poc-0.1.0
