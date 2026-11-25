@@ -19,6 +19,9 @@ trior.run(main)
 
 ## Development
 
+For maintainers and coding agents, see [AGENTS.md](AGENTS.md),
+[the technical handoff](docs/HANDOFF.md), and [the roadmap](docs/ROADMAP.md).
+
 The current prototype targets CPython 3.12 with Trio 0.35.0 as a reference.
 
 ```sh
