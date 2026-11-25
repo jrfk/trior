@@ -14,6 +14,7 @@ import resource
 import statistics
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -51,6 +52,24 @@ def percentile(values, fraction):
     return values[max(0, math.ceil(len(values) * fraction) - 1)]
 
 
+def latency_ms(values):
+    ordered = sorted(values)
+    return {name: percentile(ordered, fraction) * 1000 for name, fraction in
+            (("p50", .5), ("p95", .95), ("p99", .99), ("max", 1))}
+
+
+def dispatch_metrics(starts, finishes, period):
+    start_misses = sum(delay >= period for delay in starts)
+    finish_misses = sum(delay > period for delay in finishes)
+    return dict(
+        dispatch_start_delay_ms=latency_ms(starts),
+        dispatch_finish_delay_ms=latency_ms(finishes),
+        dispatch_start_missed_ticks=start_misses,
+        dispatch_finish_missed_ticks=finish_misses,
+        fixed_rate_maintained=start_misses == 0 and finish_misses == 0,
+    )
+
+
 async def workload(api, duration, hz):
     ticks = ticks_for(duration, hz)
     # Keep each release observable even when a worker falls behind.
@@ -60,6 +79,8 @@ async def workload(api, duration, hz):
     samples = {kind: [array("d", [0.0]) * ticks for _ in range(count)]
                for kind, count in COUNTS.items()}
     completed = {kind: [0] * count for kind, count in COUNTS.items()}
+    dispatch_starts = array("d", [0.0]) * ticks
+    dispatch_finishes = array("d", [0.0]) * ticks
     ready = api.Event()
     start = api.Event()
     arrived = 0
@@ -98,7 +119,9 @@ async def workload(api, duration, hz):
             epoch = api.current_time()
             start.set()
             for tick in range(ticks):
-                await api.sleep_until(epoch + (tick + 1) / hz)
+                deadline = epoch + (tick + 1) / hz
+                await api.sleep_until(deadline)
+                dispatch_starts[tick] = max(0.0, api.current_time() - deadline)
                 events[tick].set()
                 for send, _ in channels:
                     send.send_nowait(tick)
@@ -106,6 +129,7 @@ async def workload(api, duration, hz):
                     # The async facade handles backpressure without dropping work.
                     if await send.send(b"x") != 1:
                         raise RuntimeError("short socket send")
+                dispatch_finishes[tick] = max(0.0, api.current_time() - deadline)
         wall = time.perf_counter() - wall_start
         cpu = time.process_time() - cpu_start
         rss = peak_rss_bytes()
@@ -118,9 +142,7 @@ async def workload(api, duration, hz):
                 channel.close()
     if any(value != ticks for counts in completed.values() for value in counts):
         raise RuntimeError("incomplete work")
-    latency = sorted(
-        value for workers in samples.values() for values in workers for value in values
-    )
+    latency = (value for workers in samples.values() for values in workers for value in values)
     expected = WORKERS * ticks
     return dict(duration_s=duration, hz=hz, ticks=ticks, workers=COUNTS,
                 completed={kind: sum(values) for kind, values in completed.items()},
@@ -128,10 +150,8 @@ async def workload(api, duration, hz):
                 equivalent_work_verified=True, wall_s=wall, cpu_s=cpu,
                 cpu_percent=100 * cpu / wall, cpu_per_completion_s=cpu / expected,
                 drain_s=max(0, wall - duration), throughput=expected / wall,
-                latency_samples=len(latency),
-                latency_ms={name: percentile(latency, q)*1000 for name, q in
-                            (("p50", .5), ("p95", .95), ("p99", .99), ("max", 1))},
-                peak_rss_bytes=rss)
+                latency_samples=expected, latency_ms=latency_ms(latency), peak_rss_bytes=rss,
+                **dispatch_metrics(dispatch_starts, dispatch_finishes, 1 / hz))
 
 
 def environment():
@@ -146,6 +166,7 @@ def summarize(samples, frequencies, duration):
         ticks = ticks_for(duration, hz)
         expected = {kind: count * ticks for kind, count in COUNTS.items()}
         medians = {}
+        rate_status = {}
         for module in ("trio", "trior"):
             group = [s for s in samples if s["module"] == module and s["hz"] == hz]
             if not group or any(
@@ -162,17 +183,47 @@ def summarize(samples, frequencies, duration):
                 key: statistics.median(s["latency_ms"][key] for s in group)
                 for key in ("p50", "p95", "p99", "max")
             }
+            rates = [s.get("fixed_rate_maintained") for s in group]
+            rate_status[module] = {"maintained": rates.count(True), "missed": rates.count(False),
+                                   "unmeasured": rates.count(None)}
         trio, trior = medians["trio"], medians["trior"]
         summary.append(dict(
             hz=hz, medians=medians, completed_total=sum(expected.values()),
+            fixed_rate_trials=rate_status,
             cpu_reduction_percent=100 * (1 - trior["cpu_s"] / trio["cpu_s"]),
             occupancy_reduction_percent=100 * (1 - trior["cpu_percent"] / trio["cpu_percent"]),
         ))
     return summary
 
 
+def write_json(path, data):
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         delete=False) as handle:
+            temporary = Path(handle.name)
+            json.dump(data, handle, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        temporary.replace(path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def compare(args):
+    output = args.output
+    if output is None:
+        fd, name = tempfile.mkstemp(prefix="trior-steady-state-", suffix=".json")
+        os.close(fd)
+        output = Path(name)
     samples = []
+    report = dict(environment=environment(), duration_s=args.duration,
+                  frequencies=args.frequencies, repeats=args.repeat,
+                  complete=False, samples=samples, summary=[])
+    write_json(output, report)
+    print(f"Saving trial results to {output}", file=sys.stderr, flush=True)
     script = str(Path(__file__).resolve())
     for repeat in range(args.repeat):
         order = ("trio", "trior") if repeat % 2 == 0 else ("trior", "trio")
@@ -185,15 +236,15 @@ def compare(args):
                 sample = json.loads(result.stdout)
                 sample["repeat"] = repeat
                 samples.append(sample)
-                print(f"{module} {hz}Hz repeat {repeat + 1}: {sample['cpu_percent']:.2f}% CPU",
-                      file=sys.stderr)
-    summary = summarize(samples, args.frequencies, args.duration)
-    report = dict(environment=environment(), samples=samples, summary=summary)
-    data = json.dumps(report, indent=2)
-    if args.output:
-        Path(args.output).write_text(data + "\n")
-    else:
-        print(data)
+                write_json(output, report)
+                rate = "rate maintained" if sample["fixed_rate_maintained"] else "rate missed"
+                print(f"{module} {hz}Hz repeat {repeat + 1}: {sample['cpu_percent']:.2f}% CPU, {rate}",
+                      file=sys.stderr, flush=True)
+    report["summary"] = summarize(samples, args.frequencies, args.duration)
+    report["complete"] = True
+    write_json(output, report)
+    if args.output is None:
+        print(json.dumps(report, indent=2))
 
 
 def main():
@@ -223,7 +274,10 @@ def main():
             raise RuntimeError("reference Trio must be 0.35.0")
         result = api.run(workload, api, args.duration, args.hz)
         result.update(module=args.module, environment=environment())
-        print(json.dumps(result))
+        if args.output is None:
+            print(json.dumps(result))
+        else:
+            write_json(args.output, result)
 
 
 if __name__ == "__main__":

@@ -33,6 +33,17 @@ across all 600 workers. CPU occupancy is 100 × process CPU time / measured
 wall time, so one fully occupied core is 100%. Drain time and CPU per
 operation help interpret occupancy when work completes after the final deadline.
 
+Controller dispatch timing is measured separately. Start is sampled just
+before the Event notification. Finish is sampled after all channel and socket
+sends return. Both delays are measured from the scheduled deadline. A tick
+misses its period if dispatch starts at or after the next period boundary or
+finishes after it. A trial is marked `fixed_rate_maintained: false` if either
+miss counter is nonzero. This rule allows jitter within each period. The
+comparison lists the number of trials in each rate status at every frequency.
+CPU summaries include all trials with equivalent completed work. Check the
+rate status separately when interpreting a CPU reduction as a rate-matched
+comparison.
+
 RSS is the process peak up to the point before sorting and includes the
 interpreter, runtime, socket resources, Events and preallocated latency arrays.
 At higher rates the measurement storage grows to 3.6 million doubles at
@@ -55,6 +66,15 @@ TRIOR_REACTOR=poll .venv/bin/python -m pytest -q
 TRIOR_REACTOR=poll .venv/bin/python benchmarks/bench_steady_state.py compare --output /tmp/trior-steady-state-poll.json
 ```
 
+The comparison validates the file destination before starting and atomically
+replaces the JSON after each completed trial. If interrupted, the last
+checkpoint has `complete: false` and all samples saved up to that point.
+A new run replaces the file, so use a new path to keep a previous run.
+Omitting `--output` uses a temporary checkpoint whose path is printed to
+stderr and sends the final report to stdout. For a single trial, pass
+`trio` or `trior`, `--hz`, and optionally `--output` to write the sample
+directly to a file.
+
 ## Validation environment
 
 Measured on 2026-11-25 (JST) on macOS 27.2.1 (26B131), Darwin 27.2.0, ARM64.
@@ -67,7 +87,8 @@ Linux epoll was not executed in this campaign.
 
 Each of the 24 trials completed exactly the expected work per worker and per
 category. The table uses the median of three trials per runtime and rate.
-Reductions are relative to Trio 0.35.0.
+Reductions are relative to Trio 0.35.0. This campaign predates dispatch timing,
+so its rate adherence is unmeasured. These figures compare equal completed work.
 
 | Hz | Completions per trial | Trio CPU occupancy | Trior CPU occupancy | Occupancy reduction | Trio CPU (s) | Trior CPU (s) | CPU time reduction |
 |---:|---:|---:|---:|---:|---:|---:|---:|
@@ -107,3 +128,17 @@ The [per-trial JSON](steady-state-samples.json) contains all 24 samples,
 including per-category completions, CPU per operation, throughput, wall times
 and latency quantiles. Each trial was saved separately as it finished, then
 combined using the comparison CLI's aggregation function.
+
+## Dispatch timing validation
+
+On the same macOS ARM64 host on 2026-11-26 (JST), one 60-second trial per
+runtime at 100 Hz completed all 3,600,000 operations per trial. Trio missed
+131 dispatch finish deadlines out of 6,000; Trior missed 21. The corresponding
+start miss counts were 63 and 15. Both trials were flagged as rate misses.
+In an overload check at 2,000 Hz for 0.1 seconds, both runtimes completed
+120,000 operations and missed all 200 dispatch finish deadlines.
+
+```sh
+python benchmarks/bench_steady_state.py compare --frequencies 100 --repeat 1 --output /tmp/steady-100hz.json
+python benchmarks/bench_steady_state.py compare --duration 0.1 --frequencies 2000 --repeat 1 --output /tmp/steady-overload.json
+```

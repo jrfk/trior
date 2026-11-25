@@ -126,4 +126,7 @@ CPU occupancy and CPU time alongside scheduling latency and peak RSS.
 On macOS ARM64 with the default kqueue reactor, Trior's median CPU
 occupancy fell by 52.9%, 44.1%, 32.7% and 14.1% at 10, 20, 50 and
 100 Hz, respectively. All 24 trials completed the expected work.
+The original campaign predates dispatch timing. The benchmark now
+reports missed dispatch periods separately from completions and saves each
+comparison trial as it finishes.
 See the [measurement protocol and results](steady-state-results.md).
