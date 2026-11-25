@@ -37,13 +37,16 @@ memory channels have experimental Python APIs with native wait queues;
 the synchronization wrappers and channel payload storage use Python.
 
 The Unix readiness reactor owns descriptor registration in Rust and uses
-level-triggered poll, with timer-aware blocking waits and bounded polling
+level-triggered epoll on Linux or kqueue on macOS, with timer-aware blocking waits and bounded polling
 under ready-task load. The experimental trior.lowlevel and trior.socket
 modules expose descriptor readiness and nonblocking socket operations.
-The API is incomplete: epoll/kqueue optimization, async DNS, TCP connect,
+The API is incomplete: async DNS, TCP connect,
 higher-level streams, thread bridges, guest mode, instrumentation,
 production resource cleanup and exhaustive compatibility remain outstanding.
-The reactor has been tested on Linux only.
+The reactor has been tested on Linux only; macOS ARM64 passes cross-target
+`cargo check`. Set `TRIOR_REACTOR=poll` to select the earlier Unix poll backend.
+
+See [Stage 20](results/stage20/RESULTS_JA.md) for native reactor benchmarks.
 
 See [Stage 19](results/stage19/RESULTS_JA.md) for I/O measurements.
 

@@ -110,3 +110,58 @@ def test_independent_read_write_waiters(api):
                 b.send(b"r")
             assert set(flags) == {b"r", b"write"}
     api.run(main)
+
+@pytest.mark.parametrize("api", [trio, trior])
+def test_peer_eof(api):
+    async def main():
+        a, b = api.socket.socketpair()
+        with a, b:
+            async def reader():
+                assert await a.recv(1) == b""
+            async with api.open_nursery() as n:
+                n.start_soon(reader)
+                await api.sleep(0.001)
+                b.close()
+    api.run(main)
+
+
+@pytest.mark.parametrize("api", [trio, trior])
+def test_registration_churn(api):
+    async def main():
+        for _ in range(40):
+            a, b = api.socket.socketpair()
+            with a, b:
+                async def reader():
+                    with api.CancelScope() as scope:
+                        scope.cancel()
+                        await api.lowlevel.wait_readable(a)
+                    assert scope.cancelled_caught
+                    assert await a.recv(1) == b"x"
+                async with api.open_nursery() as n:
+                    n.start_soon(reader)
+                    await b.send(b"x")
+    api.run(main)
+
+
+@pytest.mark.parametrize("api", [trio, trior])
+def test_more_than_event_batch(api):
+    async def main():
+        pairs = [socket.socketpair() for _ in range(300)]
+        async def reader(a):
+            await api.lowlevel.wait_readable(a)
+            assert a.recv(1) == b"x"
+        try:
+            with api.CancelScope(deadline=api.current_time()+2) as scope:
+                async with api.open_nursery() as n:
+                    for a, b in pairs:
+                        a.setblocking(False)
+                        n.start_soon(reader, a)
+                    await api.sleep(0.01)
+                    for a, b in pairs:
+                        b.send(b"x")
+            assert not scope.cancelled_caught
+        finally:
+            for a, b in pairs:
+                a.close()
+                b.close()
+    api.run(main)
