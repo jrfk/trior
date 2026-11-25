@@ -10,8 +10,7 @@ References: Trio 0.35.0, https://github.com/python-trio/trio and
 https://trio.readthedocs.io/en/stable/. Intended repository:
 https://github.com/jrfk/trior. Target Python: 3.15. Proven prototype: CPython
 3.12.14 on Linux x86_64; PyO3 0.30.1, Rust 1.100.0, maturin.
-The project metadata currently restricts Python to >=3.12,<3.13 and pins Trio
-as a dependency. These are current constraints, not final packaging goals.
+The project metadata currently restricts Python to >=3.12,<3.13; Trio is a pinned test dependency only. These are current constraints, not final packaging goals.
 
 The eventual migration target is `import trior as trio`, not a claim that
 changing the import is already sufficient.
@@ -21,8 +20,8 @@ changing the import is already sufficient.
 Early stages translated the existing Trio batch loop and experimented with
 native task state, attribute access, and fused scheduling. Retaining the
 existing Python-owned task/runner state introduced significant boundary and
-object overhead; some experiments regressed performance. Read README.md,
-RESULTS_JA.md, notes/, and results/stage2 through stage17 for the actual evidence.
+object overhead; some experiments regressed performance. Read docs/research.md and archived README.md, RESULTS_JA.md, notes/,
+and results/stage2 through stage17 on research/stage20 for the actual evidence.
 Keep these experiments as controls. Do not conflate improvements to upstream
 Trio with the independent implementation. No upstream patch is required to
 continue this project.
@@ -52,12 +51,12 @@ flowchart TD
 | src/reactor/epoll.rs | Linux readiness |
 | src/reactor/kqueue.rs | macOS readiness |
 | src/reactor/poll.rs | Comparison/fallback Unix readiness |
-| src/lib.rs | PyO3 module and historical Trio adapter |
+| src/lib.rs | PyO3 module registration (historical adapter archived) |
 | python/trior/ | Public package, lowlevel and socket facade |
-| python/trio_rust_poc/runtime.py | Python API wrappers and coroutine traps |
-| spikes/runtime/ | Independent-runtime tests and benchmarks |
-| tests/, benchmarks/, notes/ | Historical research, comparison controls |
-| results/ | Raw results, logs, stage reports |
+| python/trior/_runtime.py | Python API wrappers and coroutine traps |
+| tests/ and benchmarks/ | Independent-runtime tests and benchmarks |
+| research/stage20 | Historical research and comparison controls |
+| docs/research.md | Research summary; raw evidence is on research/stage20 |
 
 The native reactor releases the GIL on blocking waits, polls during continuous
 ready work after bounded task steps, and removes registrations on cancellation
@@ -69,6 +68,7 @@ individual waits, a likely optimization opportunity.
 ## Verified scope and current limitations
 
 Stage 20 (implementation commit c783eb1; previous I/O stage 7806bbc).
+Stage 20.5 reorganizes source and tests without changing scheduler algorithms.
 Linux default epoll and poll each passed 63 tests. macOS ARM64 cross-target
 cargo check passed, not actual build/link/run on a Mac. No Windows support.
 CPython 3.15 and free-threaded Python remain unverified.
@@ -98,7 +98,7 @@ Stage 18, CPU ratios for 12,000 operations of sync primitives (not wall-time
 speedups): Event 3.29x, Lock 2.77x, Semaphore 2.31x, memory channel(0) 2.87x,
 memory channel(64) 2.46x. Earlier 600-task comparisons summarized in the
 Stage 18 report: checkpoint 3.25x, timer 11.14x, mixed 4.71x, idle cancellation
-4.09x, deadlines 1.46x. See results/stage18/RESULTS_JA.md and the previous
+4.09x, deadlines 1.46x. See archived results/stage18/RESULTS_JA.md and the previous
 stage reports for metric definitions and raw samples.
 
 Stage 19 (poll) 600 dense socket pairs: Trio wall 126.66ms / CPU 126.63ms,
@@ -130,9 +130,8 @@ epoll_ctl ADD/DEL is a hypothesis, not proven. Profile before optimizing.
 CPU occupancy is process CPU time / elapsed time, with one core = 100%.
 These short synthetic benchmarks do not predict production CPU use.
 
-Evidence: [Stage 18](../results/stage18/RESULTS_JA.md),
-[Stage 19](../results/stage19/RESULTS_JA.md),
-[Stage 20](../results/stage20/RESULTS_JA.md). Re-run against the same interpreter
+Evidence: archived results/stage18, stage19, and stage20 on research/stage20;
+see [research.md](research.md) for retrieval commands. Re-run against the same interpreter
 and hardware; compare both CPU time and wall time.
 
 ## Reproduction
@@ -140,14 +139,14 @@ and hardware; compare both CPU time and wall time.
 Follow AGENTS.md build instructions. Useful commands after activation:
 
 ```sh
-python spikes/runtime/bench_runtime.py
-python spikes/runtime/bench_sync.py
-python spikes/runtime/bench_sparse_io.py trio --count 600
-python spikes/runtime/bench_sparse_io.py trior --count 600
-TRIOR_REACTOR=poll python spikes/runtime/bench_sparse_io.py trior --count 600
-python spikes/runtime/bench_io.py trio --count 600
-python spikes/runtime/bench_io.py trior --count 600
-TRIOR_REACTOR=poll python spikes/runtime/bench_io.py trior --count 600
+python benchmarks/bench_runtime.py
+python benchmarks/bench_sync.py
+python benchmarks/bench_sparse_io.py trio --count 600
+python benchmarks/bench_sparse_io.py trior --count 600
+TRIOR_REACTOR=poll python benchmarks/bench_sparse_io.py trior --count 600
+python benchmarks/bench_io.py trio --count 600
+python benchmarks/bench_io.py trior --count 600
+TRIOR_REACTOR=poll python benchmarks/bench_io.py trior --count 600
 ```
 
 For ARM64 macOS cross-target checking from Linux (does not replace CI on Mac):

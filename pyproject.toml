@@ -7,12 +7,18 @@ name = "trior"
 version = "0.1.0"
 description = "Experimental Rust-powered structured concurrency runtime for Python"
 requires-python = ">=3.12,<3.13"
-dependencies = ["trio==0.35.0"]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["trio==0.35.0", "pytest>=9,<10"]
+
+[project.urls]
+Repository = "https://github.com/jrfk/trior"
 
 [tool.maturin]
 python-source = "python"
-module-name = "trio_rust_poc._native"
-python-packages = ["trior", "trio_rust_poc"]
+module-name = "trior._native"
+python-packages = ["trior"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

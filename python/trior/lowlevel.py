@@ -1,6 +1,6 @@
 """Experimental Trio-compatible Unix descriptor readiness API."""
 import operator
-from trio_rust_poc.runtime import (
+from ._runtime import (
     ClosedResourceError, _runtime, _yield, _PARK, _SHIELDED_CHECKPOINT,
     _checkpoint_if_cancelled, checkpoint,
 )

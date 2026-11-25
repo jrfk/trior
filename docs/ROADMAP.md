@@ -1,6 +1,6 @@
 # Trior development roadmap
 
-Last verified implementation: Stage 20 (c783eb1). Roadmap is a working
+Last algorithm implementation: Stage 20 (c783eb1); Stage 20.5 reorganizes the repository. Roadmap is a working
 proposal; reorder based on dependencies, benchmark results and owner direction.
 
 | Stage | Task | Status |
@@ -9,6 +9,7 @@ proposal; reorder based on dependencies, benchmark results and owner direction.
 | 18 | Synchronization primitives and package | Prototype complete |
 | 19 | Unix I/O reactor and partial socket API | Prototype complete |
 | 20 | epoll/kqueue and sparse/dense measurements | Linux verified; macOS type-check only |
+| 20.5 | OSS-oriented repository structure and package separation | Complete (license pending) |
 | 21 | TCP connect, SocketStream, listeners | Next |
 | 22 | Async DNS and Happy Eyeballs | Planned |
 | 23 | Dense I/O optimization and registration reuse | Planned |
@@ -51,7 +52,7 @@ Trior lowlevel/socket/runtime files.
   1/64/600 concurrent connections, sparse and dense traffic. Record CPU time,
   wall, throughput, p50/p95/p99 latency, occupancy and repeats. Use sufficient
   FD limits; distinguish setup vs steady-state. Keep both sides equivalent.
-- Deliver commits, tests, raw benchmark data, results/stage21/RESULTS_JA.md
+- Deliver commits, tests, raw benchmark data, docs/stage21-results.md
   (or equivalent), and updated API/status docs.
 
 Exit criterion: basic numeric-IP streams and listeners work, tests pass, measured

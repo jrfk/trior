@@ -24,16 +24,16 @@ a subset of tests. Keep upstream Trio contributions separate from Trior.
 ## Getting oriented
 
 Read [docs/HANDOFF.md](docs/HANDOFF.md), [docs/ROADMAP.md](docs/ROADMAP.md),
-README.md and the applicable results/ and notes/ files before changing code.
-Latest verified implementation before this documentation commit: git c783eb1
-(Stage 20). Begin with Stage 21 unless the owner directs otherwise.
+README.md and docs/research.md, plus archived results as needed before changing code.
+Stage 20 implementation: c783eb1; Stage 20.5 separates the active package
+from archived research (research/stage20). Begin with Stage 21 unless directed otherwise.
 
 - Core: src/runtime.rs; src/reactor.rs; src/reactor/{epoll,kqueue,poll}.rs.
 - Public facade: python/trior/.
-- Python coroutine driver/wrappers: python/trio_rust_poc/runtime.py.
-- Independent-runtime tests and benchmarks: spikes/runtime/.
-- Historical adapters and benchmarks: src/lib.rs, tests/, benchmarks/, older spikes/.
-- API reference dependency pinned to Trio 0.35.0. Current package requires
+- Python coroutine driver/wrappers: python/trior/_runtime.py.
+- Independent-runtime tests and benchmarks: tests/ and benchmarks/.
+- Historical adapters, tests, benchmarks and raw results: branch research/stage20.
+- API reference test dependency pinned to Trio 0.35.0; not a runtime dependency. Current package requires
   CPython >=3.12,<3.13; Python 3.15 is a development target, not yet supported.
   Do not broaden metadata until the relevant tests pass.
 
@@ -59,11 +59,11 @@ uv venv --python 3.12
 uv pip install --python .venv/bin/python -r requirements-dev.lock
 . .venv/bin/activate
 maturin develop --release --locked
-python -m pytest -q spikes/runtime
-TRIOR_REACTOR=poll python -m pytest -q spikes/runtime
+python -m pytest -q
+TRIOR_REACTOR=poll python -m pytest -q
 ```
 
-Run relevant historical tests if shared native code changes (see README).
+Historical control tests are preserved on research/stage20; use current differential tests for main.
 Linux defaults to epoll, macOS to kqueue, and TRIOR_REACTOR=poll selects the
 comparison implementation. A macOS cross-target check is not a runtime test.
 Do not report unexecuted checks as passing. State exact platform/Python versions.
@@ -86,7 +86,7 @@ For each stage:
 - Read existing code and upstream behavior; define a narrow compatibility scope.
 - Implement, add differential tests and run relevant regression suites.
 - Measure performance where the change affects the hot path.
-- Record raw data, commands, results, limitations and follow-up in results/stageXX/.
+- Record commands, results, limitations and follow-up in docs/ or benchmark artifacts; avoid accumulating raw experimental output on main.
 - Update README/roadmap when public scope or stage status changes.
 - Use scoped commits and PRs according to the owner's requested workflow.
 - Delegate independent research, test and benchmark work to subagents when

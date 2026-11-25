@@ -1,6 +1,6 @@
 """Trior — experimental structured concurrency powered by Rust."""
 
-from trio_rust_poc.runtime import (
+from ._runtime import (
     BrokenResourceError,
     CancelScope,
     Cancelled,

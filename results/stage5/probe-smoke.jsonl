@@ -1,5 +1,0 @@
-{"type": "metadata", "schema_version": 1, "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]", "trio": "0.35.0", "pid": 2, "platform": "Linux-6.18.57-x86_64-with-glibc2.39", "cpu_count": 9, "interval_seconds": 0.05, "cpu_percent_definition": "100 * process CPU nanoseconds / elapsed nanoseconds; one core = 100%", "affinity": [0, 1, 2, 3, 4, 5, 6, 7, 8], "cgroup_cpu_max": "800000 100000"}
-{"type": "sample", "timestamp_utc": "2026-11-07T11:26:41.212095+00:00", "elapsed_ns": 50376178, "process_cpu_ns": 9083960, "cpu_percent_one_core": 18.03225326065824}
-{"type": "sample", "timestamp_utc": "2026-11-07T11:26:41.262340+00:00", "elapsed_ns": 50249367, "process_cpu_ns": 3922084, "cpu_percent_one_core": 7.80524061128969}
-{"type": "sample", "timestamp_utc": "2026-11-07T11:26:41.312581+00:00", "elapsed_ns": 50245060, "process_cpu_ns": 4412342, "cpu_percent_one_core": 8.78164340932223}
-{"type": "sample", "timestamp_utc": "2026-11-07T11:26:41.334246+00:00", "elapsed_ns": 21667531, "process_cpu_ns": 8186162, "cpu_percent_one_core": 37.78077899138577}
