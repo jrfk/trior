@@ -49,6 +49,22 @@ TRIOR_REACTOR=poll python -m pytest -q
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for benchmark and contribution guidance.
 
+## Fixed-rate benchmark
+
+Compare Trio 0.35.0 and Trior with 600 concurrent workers (timers, Events,
+memory channels and local socket I/O) for 60 seconds at 10, 20, 50 and 100 Hz:
+
+```sh
+python benchmarks/bench_steady_state.py compare --output /tmp/trior-steady-state.json
+```
+
+The comparison runs three trials per runtime and frequency in fresh processes.
+It checks every worker's completion count and reports per-trial CPU occupancy,
+process CPU time, latency percentiles and maximum, and peak RSS.
+On macOS ARM64, Trior's median CPU occupancy was 14.1% to 52.9% lower
+across the four rates with matching completion counts.
+See [measurement protocol and results](docs/steady-state-results.md).
+
 ## License status
 
 Trior's independent-code license has not yet been selected by the owner.

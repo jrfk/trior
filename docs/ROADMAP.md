@@ -19,7 +19,7 @@ proposal; reorder based on dependencies, benchmark results and owner direction.
 | 26 | Port or adapt upstream Trio tests; compatibility inventory | Planned |
 | 27 | AnyIO compatibility investigation | Planned |
 | 28 | HTTP application benchmarks | Planned |
-| 29 | Long-running 600-task mixed workload | Planned |
+| 29 | Long-running 600-task mixed workload | Fixed-rate benchmark implemented. Sparse phases and cancellation churn are planned. |
 | 30 | Python 3.15 and free-threaded build/runtime validation | Planned |
 | 31 | Linux/macOS CI, architecture and wheel matrix | Planned |
 | 32 | Packaging, documentation, publication preparation | Planned |
