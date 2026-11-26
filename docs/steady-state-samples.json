@@ -1,0 +1,1197 @@
+{
+  "environment": {
+    "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+    "platform": "macOS-27.2.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "affinity": null,
+    "reactor": "platform default"
+  },
+  "samples": [
+    {
+      "duration_s": 60.0,
+      "hz": 10,
+      "ticks": 600,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 120000,
+        "event": 60000,
+        "channel": 90000,
+        "socket": 90000
+      },
+      "expected_completed": 360000,
+      "completed_total": 360000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00804024998797,
+      "cpu_s": 8.225283000000001,
+      "cpu_percent": 13.706968209150356,
+      "cpu_per_completion_s": 2.2848008333333337e-05,
+      "drain_s": 0.008040249987971038,
+      "throughput": 5999.196082729467,
+      "latency_samples": 360000,
+      "latency_ms": {
+        "p50": 9.80787500157021,
+        "p95": 16.012915992178023,
+        "p99": 19.28954097093083,
+        "max": 28.094915993278846
+      },
+      "peak_rss_bytes": 38076416,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 10,
+      "ticks": 600,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 120000,
+        "event": 60000,
+        "channel": 90000,
+        "socket": 90000
+      },
+      "expected_completed": 360000,
+      "completed_total": 360000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00805512499937,
+      "cpu_s": 3.6477999999999997,
+      "cpu_percent": 6.078850568313662,
+      "cpu_per_completion_s": 1.0132777777777778e-05,
+      "drain_s": 0.00805512499937322,
+      "throughput": 5999.1945956272775,
+      "latency_samples": 360000,
+      "latency_ms": {
+        "p50": 2.780374999999946,
+        "p95": 6.870500000005109,
+        "p99": 8.074417000003109,
+        "max": 12.596625000000472
+      },
+      "peak_rss_bytes": 28786688,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 20,
+      "ticks": 1200,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 240000,
+        "event": 120000,
+        "channel": 180000,
+        "socket": 180000
+      },
+      "expected_completed": 720000,
+      "completed_total": 720000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.01382266699511,
+      "cpu_s": 13.65365,
+      "cpu_percent": 22.750842044775943,
+      "cpu_per_completion_s": 1.896340277777778e-05,
+      "drain_s": 0.013822666995110922,
+      "throughput": 11997.236103341364,
+      "latency_samples": 720000,
+      "latency_ms": {
+        "p50": 7.602333993418142,
+        "p95": 14.978542021708563,
+        "p99": 22.363291995134205,
+        "max": 95.2716669999063
+      },
+      "peak_rss_bytes": 41598976,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 20,
+      "ticks": 1200,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 240000,
+        "event": 120000,
+        "channel": 180000,
+        "socket": 180000
+      },
+      "expected_completed": 720000,
+      "completed_total": 720000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00856033299351,
+      "cpu_s": 9.219297,
+      "cpu_percent": 15.363303083495415,
+      "cpu_per_completion_s": 1.2804579166666665e-05,
+      "drain_s": 0.00856033299351111,
+      "throughput": 11998.28817763079,
+      "latency_samples": 720000,
+      "latency_ms": {
+        "p50": 3.4288749999973334,
+        "p95": 9.693374999997673,
+        "p99": 12.92454100000029,
+        "max": 58.008749999999054
+      },
+      "peak_rss_bytes": 33128448,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 50,
+      "ticks": 3000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 600000,
+        "event": 300000,
+        "channel": 450000,
+        "socket": 450000
+      },
+      "expected_completed": 1800000,
+      "completed_total": 1800000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00784795900108,
+      "cpu_s": 23.749579999999998,
+      "cpu_percent": 39.577456629050126,
+      "cpu_per_completion_s": 1.319421111111111e-05,
+      "drain_s": 0.007847959001082927,
+      "throughput": 29996.076533686173,
+      "latency_samples": 1800000,
+      "latency_ms": {
+        "p50": 5.644582968670875,
+        "p95": 10.358958010328934,
+        "p99": 36.15058297873475,
+        "max": 215.19716599141248
+      },
+      "peak_rss_bytes": 51757056,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 50,
+      "ticks": 3000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 600000,
+        "event": 300000,
+        "channel": 450000,
+        "socket": 450000
+      },
+      "expected_completed": 1800000,
+      "completed_total": 1800000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00542762498662,
+      "cpu_s": 15.993608,
+      "cpu_percent": 26.653602237375214,
+      "cpu_per_completion_s": 8.885337777777777e-06,
+      "drain_s": 0.005427624986623414,
+      "throughput": 29997.286432977093,
+      "latency_samples": 1800000,
+      "latency_ms": {
+        "p50": 2.656250000001137,
+        "p95": 7.2756249999983424,
+        "p99": 9.570166999999685,
+        "max": 54.10233399999997
+      },
+      "peak_rss_bytes": 44580864,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 100,
+      "ticks": 6000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 1200000,
+        "event": 600000,
+        "channel": 900000,
+        "socket": 900000
+      },
+      "expected_completed": 3600000,
+      "completed_total": 3600000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00973408400023,
+      "cpu_s": 32.266123,
+      "cpu_percent": 53.76814860541564,
+      "cpu_per_completion_s": 8.962811944444445e-06,
+      "drain_s": 0.009734084000228904,
+      "throughput": 59990.26749495013,
+      "latency_samples": 3600000,
+      "latency_ms": {
+        "p50": 3.5712090029846877,
+        "p95": 38.58650001347996,
+        "p99": 608.8256669754628,
+        "max": 1147.0818750094622
+      },
+      "peak_rss_bytes": 66256896,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 100,
+      "ticks": 6000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 1200000,
+        "event": 600000,
+        "channel": 900000,
+        "socket": 900000
+      },
+      "expected_completed": 3600000,
+      "completed_total": 3600000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00315037500695,
+      "cpu_s": 19.094884,
+      "cpu_percent": 31.82313575314134,
+      "cpu_per_completion_s": 5.304134444444445e-06,
+      "drain_s": 0.0031503750069532543,
+      "throughput": 59996.84979039874,
+      "latency_samples": 3600000,
+      "latency_ms": {
+        "p50": 1.6819579999989287,
+        "p95": 4.0103750000000105,
+        "p99": 6.439540999998883,
+        "max": 100.44616600000111
+      },
+      "peak_rss_bytes": 62341120,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 0
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 10,
+      "ticks": 600,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 120000,
+        "event": 60000,
+        "channel": 90000,
+        "socket": 90000
+      },
+      "expected_completed": 360000,
+      "completed_total": 360000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00507979100803,
+      "cpu_s": 3.8964220000000003,
+      "cpu_percent": 6.493486907393285,
+      "cpu_per_completion_s": 1.0823394444444446e-05,
+      "drain_s": 0.005079791008029133,
+      "throughput": 5999.492063902684,
+      "latency_samples": 360000,
+      "latency_ms": {
+        "p50": 3.2775419999993005,
+        "p95": 7.873624999998441,
+        "p99": 9.048917000001211,
+        "max": 18.407916999997553
+      },
+      "peak_rss_bytes": 29048832,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 10,
+      "ticks": 600,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 120000,
+        "event": 60000,
+        "channel": 90000,
+        "socket": 90000
+      },
+      "expected_completed": 360000,
+      "completed_total": 360000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.01698724999733,
+      "cpu_s": 8.279534,
+      "cpu_percent": 13.795317591521338,
+      "cpu_per_completion_s": 2.2998705555555555e-05,
+      "drain_s": 0.016987249997328036,
+      "throughput": 5998.301755808578,
+      "latency_samples": 360000,
+      "latency_ms": {
+        "p50": 10.103292064741254,
+        "p95": 16.124792047776282,
+        "p99": 19.614917051512748,
+        "max": 26.572917005978525
+      },
+      "peak_rss_bytes": 38289408,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 20,
+      "ticks": 1200,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 240000,
+        "event": 120000,
+        "channel": 180000,
+        "socket": 180000
+      },
+      "expected_completed": 720000,
+      "completed_total": 720000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.004216667002765,
+      "cpu_s": 6.176798,
+      "cpu_percent": 10.293939898055058,
+      "cpu_per_completion_s": 8.57888611111111e-06,
+      "drain_s": 0.004216667002765462,
+      "throughput": 11999.156725862884,
+      "latency_samples": 720000,
+      "latency_ms": {
+        "p50": 2.6258749999996667,
+        "p95": 6.416666999999876,
+        "p99": 7.797666999998398,
+        "max": 11.748000000000758
+      },
+      "peak_rss_bytes": 33292288,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 20,
+      "ticks": 1200,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 240000,
+        "event": 120000,
+        "channel": 180000,
+        "socket": 180000
+      },
+      "expected_completed": 720000,
+      "completed_total": 720000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.01021475000016,
+      "cpu_s": 12.234299,
+      "cpu_percent": 20.387027526842783,
+      "cpu_per_completion_s": 1.6992081944444444e-05,
+      "drain_s": 0.010214750000159256,
+      "throughput": 11997.95739774449,
+      "latency_samples": 720000,
+      "latency_ms": {
+        "p50": 7.161833986174315,
+        "p95": 11.183499998878688,
+        "p99": 14.320999995106831,
+        "max": 19.23795900074765
+      },
+      "peak_rss_bytes": 41762816,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 50,
+      "ticks": 3000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 600000,
+        "event": 300000,
+        "channel": 450000,
+        "socket": 450000
+      },
+      "expected_completed": 1800000,
+      "completed_total": 1800000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.008307708005304,
+      "cpu_s": 11.584480000000001,
+      "cpu_percent": 19.30479369018199,
+      "cpu_per_completion_s": 6.435822222222223e-06,
+      "drain_s": 0.008307708005304448,
+      "throughput": 29995.846721067825,
+      "latency_samples": 1800000,
+      "latency_ms": {
+        "p50": 2.1074580000046694,
+        "p95": 4.6711669999996985,
+        "p99": 6.576167000005739,
+        "max": 12.055917000004968
+      },
+      "peak_rss_bytes": 44630016,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 50,
+      "ticks": 3000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 600000,
+        "event": 300000,
+        "channel": 450000,
+        "socket": 450000
+      },
+      "expected_completed": 1800000,
+      "completed_total": 1800000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00795462500537,
+      "cpu_s": 25.037515,
+      "cpu_percent": 41.723660065505456,
+      "cpu_per_completion_s": 1.3909730555555554e-05,
+      "drain_s": 0.007954625005368143,
+      "throughput": 29996.02321472791,
+      "latency_samples": 1800000,
+      "latency_ms": {
+        "p50": 5.844875035108998,
+        "p95": 9.440666995942593,
+        "p99": 14.138375001493841,
+        "max": 311.9819170096889
+      },
+      "peak_rss_bytes": 51511296,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 100,
+      "ticks": 6000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 1200000,
+        "event": 600000,
+        "channel": 900000,
+        "socket": 900000
+      },
+      "expected_completed": 3600000,
+      "completed_total": 3600000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00331787500181,
+      "cpu_s": 29.699168,
+      "cpu_percent": 49.49587631448806,
+      "cpu_per_completion_s": 8.249768888888888e-06,
+      "drain_s": 0.0033178750018123537,
+      "throughput": 59996.68230845962,
+      "latency_samples": 3600000,
+      "latency_ms": {
+        "p50": 2.0741250000000377,
+        "p95": 5.552374999997056,
+        "p99": 6.575791000000386,
+        "max": 40.81312499999967
+      },
+      "peak_rss_bytes": 62439424,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 100,
+      "ticks": 6000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 1200000,
+        "event": 600000,
+        "channel": 900000,
+        "socket": 900000
+      },
+      "expected_completed": 3600000,
+      "completed_total": 3600000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00475437499699,
+      "cpu_s": 31.990510999999998,
+      "cpu_percent": 53.31329381014836,
+      "cpu_per_completion_s": 8.886253055555556e-06,
+      "drain_s": 0.004754374996991828,
+      "throughput": 59995.24600170785,
+      "latency_samples": 3600000,
+      "latency_ms": {
+        "p50": 3.592833032598719,
+        "p95": 5.899875017348677,
+        "p99": 9.396000008564442,
+        "max": 144.67608300037682
+      },
+      "peak_rss_bytes": 65994752,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 1
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 10,
+      "ticks": 600,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 120000,
+        "event": 60000,
+        "channel": 90000,
+        "socket": 90000
+      },
+      "expected_completed": 360000,
+      "completed_total": 360000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.017068333007046,
+      "cpu_s": 7.823171,
+      "cpu_percent": 13.034910263515089,
+      "cpu_per_completion_s": 2.1731030555555555e-05,
+      "drain_s": 0.01706833300704602,
+      "throughput": 5998.293652107863,
+      "latency_samples": 360000,
+      "latency_ms": {
+        "p50": 9.370625019073486,
+        "p95": 15.311666997149587,
+        "p99": 18.326291989069432,
+        "max": 23.973167000804096
+      },
+      "peak_rss_bytes": 38207488,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 10,
+      "ticks": 600,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 120000,
+        "event": 60000,
+        "channel": 90000,
+        "socket": 90000
+      },
+      "expected_completed": 360000,
+      "completed_total": 360000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.006687457993394,
+      "cpu_s": 3.876014,
+      "cpu_percent": 6.459303394664693,
+      "cpu_per_completion_s": 1.0766705555555556e-05,
+      "drain_s": 0.006687457993393764,
+      "throughput": 5999.331328729178,
+      "latency_samples": 360000,
+      "latency_ms": {
+        "p50": 2.9874999999996987,
+        "p95": 7.279041999998626,
+        "p99": 8.33370900000574,
+        "max": 10.504834000002461
+      },
+      "peak_rss_bytes": 29114368,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 20,
+      "ticks": 1200,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 240000,
+        "event": 120000,
+        "channel": 180000,
+        "socket": 180000
+      },
+      "expected_completed": 720000,
+      "completed_total": 720000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00971329199092,
+      "cpu_s": 12.457631999999998,
+      "cpu_percent": 20.75935930469215,
+      "cpu_per_completion_s": 1.7302266666666665e-05,
+      "drain_s": 0.00971329199091997,
+      "throughput": 11998.057656044382,
+      "latency_samples": 720000,
+      "latency_ms": {
+        "p50": 7.261874998221174,
+        "p95": 11.380291020032018,
+        "p99": 14.401332999113947,
+        "max": 21.38833299977705
+      },
+      "peak_rss_bytes": 41680896,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 20,
+      "ticks": 1200,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 240000,
+        "event": 120000,
+        "channel": 180000,
+        "socket": 180000
+      },
+      "expected_completed": 720000,
+      "completed_total": 720000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00841991599009,
+      "cpu_s": 6.9665669999999995,
+      "cpu_percent": 11.609315842265095,
+      "cpu_per_completion_s": 9.675787499999999e-06,
+      "drain_s": 0.008419915990089066,
+      "throughput": 11998.316253085442,
+      "latency_samples": 720000,
+      "latency_ms": {
+        "p50": 2.937250000002223,
+        "p95": 7.582166999995366,
+        "p99": 12.499625000003789,
+        "max": 123.06291700000216
+      },
+      "peak_rss_bytes": 33325056,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 50,
+      "ticks": 3000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 600000,
+        "event": 300000,
+        "channel": 450000,
+        "socket": 450000
+      },
+      "expected_completed": 1800000,
+      "completed_total": 1800000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.007794417004334,
+      "cpu_s": 21.639211,
+      "cpu_percent": 36.06066713538154,
+      "cpu_per_completion_s": 1.2021783888888888e-05,
+      "drain_s": 0.007794417004333809,
+      "throughput": 29996.103297706544,
+      "latency_samples": 1800000,
+      "latency_ms": {
+        "p50": 5.1380840013735,
+        "p95": 8.707542001502588,
+        "p99": 13.490334007656202,
+        "max": 139.45041698752902
+      },
+      "peak_rss_bytes": 51560448,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 50,
+      "ticks": 3000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 600000,
+        "event": 300000,
+        "channel": 450000,
+        "socket": 450000
+      },
+      "expected_completed": 1800000,
+      "completed_total": 1800000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.006110417001764,
+      "cpu_s": 19.72243,
+      "cpu_percent": 32.867369444449054,
+      "cpu_per_completion_s": 1.0956905555555555e-05,
+      "drain_s": 0.00611041700176429,
+      "throughput": 29996.945102610734,
+      "latency_samples": 1800000,
+      "latency_ms": {
+        "p50": 3.175249999999963,
+        "p95": 7.968208000001198,
+        "p99": 9.886375000000669,
+        "max": 101.75512500000006
+      },
+      "peak_rss_bytes": 44662784,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 100,
+      "ticks": 6000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 1200000,
+        "event": 600000,
+        "channel": 900000,
+        "socket": 900000
+      },
+      "expected_completed": 3600000,
+      "completed_total": 3600000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.00965845800238,
+      "cpu_s": 32.089244,
+      "cpu_percent": 53.47346547965705,
+      "cpu_per_completion_s": 8.91367888888889e-06,
+      "drain_s": 0.009658458002377301,
+      "throughput": 59990.3430965109,
+      "latency_samples": 3600000,
+      "latency_ms": {
+        "p50": 3.6017920065205544,
+        "p95": 5.84966700989753,
+        "p99": 9.129500016570091,
+        "max": 79.13150000968017
+      },
+      "peak_rss_bytes": 65798144,
+      "module": "trio",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    },
+    {
+      "duration_s": 60.0,
+      "hz": 100,
+      "ticks": 6000,
+      "workers": {
+        "timer": 200,
+        "event": 100,
+        "channel": 150,
+        "socket": 150
+      },
+      "completed": {
+        "timer": 1200000,
+        "event": 600000,
+        "channel": 900000,
+        "socket": 900000
+      },
+      "expected_completed": 3600000,
+      "completed_total": 3600000,
+      "equivalent_work_verified": true,
+      "wall_s": 60.005680250003934,
+      "cpu_s": 27.551461,
+      "cpu_percent": 45.914754878557005,
+      "cpu_per_completion_s": 7.653183611111112e-06,
+      "drain_s": 0.0056802500039339066,
+      "throughput": 59994.32028769916,
+      "latency_samples": 3600000,
+      "latency_ms": {
+        "p50": 1.9866670000006081,
+        "p95": 5.42137500000095,
+        "p99": 6.465582999999997,
+        "max": 21.827958000001146
+      },
+      "peak_rss_bytes": 62275584,
+      "module": "trior",
+      "environment": {
+        "python": "3.12.13 (main, Mar 10 2026, 18:18:07) [Clang 21.1.4 ]",
+        "platform": "macOS-27.2.1-arm64-arm-64bit",
+        "machine": "arm64",
+        "affinity": null,
+        "reactor": "platform default"
+      },
+      "repeat": 2
+    }
+  ],
+  "summary": [
+    {
+      "hz": 10,
+      "medians": {
+        "trio": {
+          "cpu_s": 8.225283000000001,
+          "cpu_percent": 13.706968209150356,
+          "wall_s": 60.01698724999733,
+          "peak_rss_bytes": 38207488,
+          "cpu_per_completion_s": 2.2848008333333337e-05,
+          "drain_s": 0.016987249997328036,
+          "throughput": 5998.301755808578,
+          "latency_ms": {
+            "p50": 9.80787500157021,
+            "p95": 16.012915992178023,
+            "p99": 19.28954097093083,
+            "max": 26.572917005978525
+          }
+        },
+        "trior": {
+          "cpu_s": 3.876014,
+          "cpu_percent": 6.459303394664693,
+          "wall_s": 60.006687457993394,
+          "peak_rss_bytes": 29048832,
+          "cpu_per_completion_s": 1.0766705555555556e-05,
+          "drain_s": 0.006687457993393764,
+          "throughput": 5999.331328729178,
+          "latency_ms": {
+            "p50": 2.9874999999996987,
+            "p95": 7.279041999998626,
+            "p99": 8.33370900000574,
+            "max": 12.596625000000472
+          }
+        }
+      },
+      "completed_total": 360000,
+      "cpu_reduction_percent": 52.876831107209334,
+      "occupancy_reduction_percent": 52.87576876152191
+    },
+    {
+      "hz": 20,
+      "medians": {
+        "trio": {
+          "cpu_s": 12.457631999999998,
+          "cpu_percent": 20.75935930469215,
+          "wall_s": 60.01021475000016,
+          "peak_rss_bytes": 41680896,
+          "cpu_per_completion_s": 1.7302266666666665e-05,
+          "drain_s": 0.010214750000159256,
+          "throughput": 11997.95739774449,
+          "latency_ms": {
+            "p50": 7.261874998221174,
+            "p95": 11.380291020032018,
+            "p99": 14.401332999113947,
+            "max": 21.38833299977705
+          }
+        },
+        "trior": {
+          "cpu_s": 6.9665669999999995,
+          "cpu_percent": 11.609315842265095,
+          "wall_s": 60.00841991599009,
+          "peak_rss_bytes": 33292288,
+          "cpu_per_completion_s": 9.675787499999999e-06,
+          "drain_s": 0.008419915990089066,
+          "throughput": 11998.316253085442,
+          "latency_ms": {
+            "p50": 2.937250000002223,
+            "p95": 7.582166999995366,
+            "p99": 12.499625000003789,
+            "max": 58.008749999999054
+          }
+        }
+      },
+      "completed_total": 720000,
+      "cpu_reduction_percent": 44.077919463345836,
+      "occupancy_reduction_percent": 44.076714161206844
+    },
+    {
+      "hz": 50,
+      "medians": {
+        "trio": {
+          "cpu_s": 23.749579999999998,
+          "cpu_percent": 39.577456629050126,
+          "wall_s": 60.00784795900108,
+          "peak_rss_bytes": 51560448,
+          "cpu_per_completion_s": 1.319421111111111e-05,
+          "drain_s": 0.007847959001082927,
+          "throughput": 29996.076533686173,
+          "latency_ms": {
+            "p50": 5.644582968670875,
+            "p95": 9.440666995942593,
+            "p99": 14.138375001493841,
+            "max": 215.19716599141248
+          }
+        },
+        "trior": {
+          "cpu_s": 15.993608,
+          "cpu_percent": 26.653602237375214,
+          "wall_s": 60.006110417001764,
+          "peak_rss_bytes": 44630016,
+          "cpu_per_completion_s": 8.885337777777777e-06,
+          "drain_s": 0.00611041700176429,
+          "throughput": 29996.945102610734,
+          "latency_ms": {
+            "p50": 2.656250000001137,
+            "p95": 7.2756249999983424,
+            "p99": 9.570166999999685,
+            "max": 54.10233399999997
+          }
+        }
+      },
+      "completed_total": 1800000,
+      "cpu_reduction_percent": 32.65730172912531,
+      "occupancy_reduction_percent": 32.65458544445403
+    },
+    {
+      "hz": 100,
+      "medians": {
+        "trio": {
+          "cpu_s": 32.089244,
+          "cpu_percent": 53.47346547965705,
+          "wall_s": 60.00965845800238,
+          "peak_rss_bytes": 65994752,
+          "cpu_per_completion_s": 8.91367888888889e-06,
+          "drain_s": 0.009658458002377301,
+          "throughput": 59990.3430965109,
+          "latency_ms": {
+            "p50": 3.592833032598719,
+            "p95": 5.899875017348677,
+            "p99": 9.396000008564442,
+            "max": 144.67608300037682
+          }
+        },
+        "trior": {
+          "cpu_s": 27.551461,
+          "cpu_percent": 45.914754878557005,
+          "wall_s": 60.00331787500181,
+          "peak_rss_bytes": 62341120,
+          "cpu_per_completion_s": 7.653183611111112e-06,
+          "drain_s": 0.0033178750018123537,
+          "throughput": 59996.68230845962,
+          "latency_ms": {
+            "p50": 1.9866670000006081,
+            "p95": 5.42137500000095,
+            "p99": 6.465582999999997,
+            "max": 40.81312499999967
+          }
+        }
+      },
+      "completed_total": 3600000,
+      "cpu_reduction_percent": 14.141134019860369,
+      "occupancy_reduction_percent": 14.135441818289507
+    }
+  ]
+}

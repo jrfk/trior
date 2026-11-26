@@ -115,3 +115,18 @@ Raw CPU samples (ms):
 - trior 600: 5.177, 3.648, 3.689, 3.461, 3.642, 3.370, 3.596
 - trio 2000: 56.885, 51.419, 44.316, 51.304, 45.083, 53.121, 44.278
 - trior 2000: 14.420, 13.058, 12.446, 11.247, 11.794, 13.446, 14.779
+
+## Fixed-rate 600-worker mixed workload
+
+The Stage 29 baseline compares Trio 0.35.0 and Trior on the same scheduled
+work: 200 timer tasks, 100 Event tasks, 150 memory channel tasks and 150 Unix
+socket tasks. Each trial schedules 60 seconds of work at 10, 20, 50 or
+100 Hz. The harness verifies all per-worker completions and reports process
+CPU occupancy and CPU time alongside scheduling latency and peak RSS.
+On macOS ARM64 with the default kqueue reactor, Trior's median CPU
+occupancy fell by 52.9%, 44.1%, 32.7% and 14.1% at 10, 20, 50 and
+100 Hz, respectively. All 24 trials completed the expected work.
+The original campaign predates dispatch timing. The benchmark now
+reports missed dispatch periods separately from completions and saves each
+comparison trial as it finishes.
+See the [measurement protocol and results](steady-state-results.md).

@@ -22,5 +22,12 @@ python benchmarks/bench_io.py trior --count 600
 
 Report CPU time, elapsed time, raw repeats, environment and limitations.
 Do not claim full compatibility or extrapolate microbenchmarks to production.
+
+Run the full 600-worker steady-state benchmark on demand when evaluating
+scheduler or reactor changes or collecting a release baseline. It takes
+about 24 minutes and runs only when started explicitly. In GitHub Actions,
+select **Steady-state benchmark** and **Run workflow**. Download the
+`steady-state` artifact to inspect completed trials. For direct comparisons
+with historical measurements, use the same local hardware and Python build.
 Keep upstream Trio contributions separate. Licensing is pending owner decision;
 see docs/licensing.md before external contributions or publication.
