@@ -48,6 +48,7 @@ TRIOR_REACTOR=poll python -m pytest -q
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for benchmark and contribution guidance.
+See [the release guide](docs/release.md) for distribution builds and publishing setup.
 
 ## Fixed-rate benchmark
 
