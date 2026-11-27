@@ -6,7 +6,6 @@ build-backend = "maturin"
 name = "trior"
 version = "0.1.0"
 description = "Experimental Rust-powered structured concurrency runtime for Python"
-readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE", "LICENSE.Trio"]
 requires-python = ">=3.12,<3.13"
