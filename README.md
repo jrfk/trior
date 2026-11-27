@@ -1,5 +1,8 @@
 # trior
 
+[![PyPI version](https://img.shields.io/pypi/v/trior)](https://pypi.org/project/trior/)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue)](https://pypi.org/project/trior/#files)
+
 **trior** /ˈtriː.ɔːr/ — pronounced “TREE-or”.
 
 An experimental Rust-powered async runtime for Python. Trior implements a
