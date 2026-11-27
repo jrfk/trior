@@ -1,7 +1,9 @@
-# Trior
+# trior
 
-An experimental Rust-powered structured concurrency runtime for Python,
-aiming for Trio API compatibility and lower CPU overhead.
+**trior** /ˈtriː.ɔːr/ — pronounced “TREE-or” (トリオール).
+
+An experimental Rust-powered async runtime for Python. Trior implements a
+subset of the Trio API and explores how Rust can reduce runtime CPU overhead.
 
 > Early development. Not a drop-in replacement for Trio or production-ready.
 
@@ -28,10 +30,13 @@ poll is retained for comparison. The public Python package is `trior`.
 Current prototype: basic nurseries (including start/start_soon and task status), cancellation, timers, synchronization,
 memory channels and partial nonblocking socket operations. TCP connect,
 higher-level streams, DNS, threads and complete Trio API parity are pending.
-Linux has been tested; macOS ARM64 previously passed a cross-target type check.
+CPython 3.12 runtime tests pass on Linux x86_64 and macOS ARM64.
 
-See [architecture](docs/architecture.md), [roadmap](docs/ROADMAP.md),
-[research](docs/research.md) and [technical handoff](docs/HANDOFF.md).
+- [API overview](docs/api.md) for examples and supported features.
+- [Architecture](docs/architecture.md) and [technical handoff](docs/HANDOFF.md)
+  for runtime internals and limitations.
+- [Research](docs/research.md) and [roadmap](docs/ROADMAP.md) for measurements
+  and future work.
 
 ## Development
 
@@ -68,6 +73,18 @@ saves each trial as it completes. In the original macOS ARM64 campaign,
 Trior's median CPU occupancy was 14.1% to 52.9% lower at equal completed
 work. That campaign predates dispatch timing.
 See [measurement protocol and results](docs/steady-state-results.md).
+
+## Acknowledgments
+
+Trior is inspired by [Trio](https://github.com/python-trio/trio) and its
+approach to structured concurrency.
+
+We deeply appreciate the work of the Trio authors and contributors.
+Trior would not exist without their ideas and contributions.
+
+Our goal is to build on Trio's excellent design by exploring how Rust can
+improve runtime performance and CPU efficiency while preserving Trio's
+structured concurrency semantics.
 
 ## License status
 
