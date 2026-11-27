@@ -70,8 +70,9 @@ individual waits, a likely optimization opportunity.
 Stage 20 (implementation commit c783eb1; previous I/O stage 7806bbc).
 Stage 20.5 reorganizes source and tests without changing scheduler algorithms.
 Stage 20.6 adds Nursery.start, TaskStatus and TASK_STATUS_IGNORED; see research.md.
-Linux default epoll and poll each passed 63 tests. macOS ARM64 cross-target
-cargo check passed, not actual build/link/run on a Mac. No Windows support.
+Stage 20 originally verified Linux epoll and poll and cross-checked macOS.
+Subsequent CI runs the regression suite on Linux x86_64
+and macOS ARM64, covering epoll, kqueue and poll. No Windows support.
 CPython 3.15 and free-threaded Python remain unverified.
 
 | Component | Status |
@@ -84,7 +85,7 @@ CPython 3.15 and free-threaded Python remain unverified.
 | socket, socketpair, from_stdlib_socket | Implemented partial facade |
 | recv, recv_into, send, accept | Implemented partial facade |
 | epoll/poll | Linux tested |
-| kqueue | macOS cross-target check only |
+| kqueue | macOS ARM64 runtime tested |
 | TCP connect, SocketStream, SocketListener, open_tcp_stream | Not implemented |
 | DNS, thread bridges, guest mode, instrumentation | Not implemented |
 | AnyIO, full upstream suite, production cleanup | Not verified |
@@ -161,8 +162,6 @@ PYO3_CROSS=1 PYO3_CROSS_PYTHON_VERSION=3.12 cargo check --locked --target aarch6
 ## Where to resume
 
 Stage 21 is the next task, not already implemented. See ROADMAP.md for
-acceptance criteria. Keep the new code in the independent Trior runtime;
-do not replace it with a Trio wrapper or benchmark a different workload under
-the same label. Use GitHub commits and PRs for subsequent work at owner's
-direction. GitHub creation was reported by the owner; this archive does not
-assert a successful remote push.
+acceptance criteria. Keep new code in the independent Trior runtime and verify
+equivalent completed work in comparisons. The fixed-rate workload provides a
+partial Stage 29 baseline. See [benchmark results](steady-state-results.md).

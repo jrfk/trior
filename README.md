@@ -1,7 +1,9 @@
-# Trior
+# trior
 
-An experimental Rust-powered structured concurrency runtime for Python,
-aiming for Trio API compatibility and lower CPU overhead.
+**trior** /ˈtriː.ɔːr/ — pronounced “TREE-or”.
+
+An experimental Rust-powered async runtime for Python. Trior implements a
+subset of the Trio API and explores how Rust can reduce runtime CPU overhead.
 
 > Early development. Not a drop-in replacement for Trio or production-ready.
 
@@ -19,19 +21,55 @@ async def main():
 trior.run(main)
 ```
 
+[Implemented APIs](docs/api.md#implemented-apis) ·
+[Planned APIs](docs/api.md#planned-apis) · [Usage examples](docs/api.md#starting-and-joining-tasks)
+
+## Performance highlights
+
+These historical microbenchmarks compare Trior with Trio 0.35.0 on
+Linux x86_64 and CPython 3.12.14.
+
+### Nursery startup
+
+Start children sequentially with `Nursery.start`, then release them and
+wait for them to exit. Each time is the median of seven trials.
+
+| Child tasks | Trio elapsed time | Trior elapsed time | Speedup |
+|---:|---:|---:|---:|
+| 64 | 1.755 ms | 0.392 ms | **4.48×** |
+| 600 | 15.766 ms | 3.640 ms | **4.33×** |
+| 2,000 | 51.302 ms | 13.057 ms | **3.93×** |
+
+[Startup benchmark details](docs/research.md#stage-206-nurserystart)
+
+### Sparse socket I/O
+
+One socket pair handles 3,000 readiness and receive operations while the
+other pairs are parked. Trior uses epoll. Each time is the median of five trials.
+
+| Socket pairs | Trio elapsed time | Trior elapsed time | Speedup |
+|---:|---:|---:|---:|
+| 64 | 32.31 ms | 22.83 ms | **1.42×** |
+| 600 | 45.76 ms | 25.50 ms | **1.79×** |
+| 2,000 | 79.44 ms | 44.24 ms | **1.80×** |
+
+[Sparse I/O benchmark details](docs/HANDOFF.md#performance-evidence)
+
+The [fixed-rate benchmark](#fixed-rate-benchmark) reports CPU occupancy
+for a 60-second mixed workload.
+
 ## Architecture
 
 Python executes user coroutines; Rust owns scheduler state, ready queues,
 timers, cancellation and I/O readiness. Linux uses epoll; macOS uses kqueue;
 poll is retained for comparison. The public Python package is `trior`.
 
-Current prototype: basic nurseries (including start/start_soon and task status), cancellation, timers, synchronization,
-memory channels and partial nonblocking socket operations. TCP connect,
-higher-level streams, DNS, threads and complete Trio API parity are pending.
-Linux has been tested; macOS ARM64 previously passed a cross-target type check.
+CPython 3.12 runtime tests pass on Linux x86_64 and macOS ARM64.
 
-See [architecture](docs/architecture.md), [roadmap](docs/ROADMAP.md),
-[research](docs/research.md) and [technical handoff](docs/HANDOFF.md).
+- [Architecture](docs/architecture.md) and [technical handoff](docs/HANDOFF.md)
+  for runtime internals and limitations.
+- [Research](docs/research.md) and [roadmap](docs/ROADMAP.md) for measurements
+  and future work.
 
 ## Development
 
@@ -49,10 +87,27 @@ TRIOR_REACTOR=poll python -m pytest -q
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for benchmark and contribution guidance.
 
+## Acknowledgments
+
+Trior is inspired by [Trio](https://github.com/python-trio/trio) and its
+approach to structured concurrency.
+
+We deeply appreciate the work of the Trio authors and contributors.
+Trior would not exist without their ideas and contributions.
+
+Our goal is to build on Trio's excellent design by exploring how Rust can
+improve runtime performance and CPU efficiency while preserving Trio's
+structured concurrency semantics.
+
 ## Fixed-rate benchmark
 
-Compare Trio 0.35.0 and Trior with 600 concurrent workers (timers, Events,
-memory channels and local socket I/O) for 60 seconds at 10, 20, 50 and 100 Hz:
+The benchmark compares Trio 0.35.0 and Trior with 600 concurrent workers
+(timers, Events, memory channels and local socket I/O) for 60 seconds at
+10, 20, 50 and 100 Hz.
+
+![Median CPU occupancy on macOS ARM64. At 10, 20, 50 and 100 Hz, Trio used 13.71%, 20.76%, 39.58% and 53.47%, while Trior used 6.46%, 11.61%, 26.65% and 45.91%.](docs/steady-state-cpu-occupancy.png)
+
+To reproduce the comparison, run the benchmark from the repository root.
 
 ```sh
 python benchmarks/bench_steady_state.py compare --output /tmp/trior-steady-state.json
