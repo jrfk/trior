@@ -1,6 +1,6 @@
 # trior
 
-**trior** /ˈtriː.ɔːr/ — pronounced “TREE-or” (トリオール).
+**trior** /ˈtriː.ɔːr/ — pronounced “TREE-or”.
 
 An experimental Rust-powered async runtime for Python. Trior implements a
 subset of the Trio API and explores how Rust can reduce runtime CPU overhead.
