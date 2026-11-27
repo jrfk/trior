@@ -29,5 +29,6 @@ about 24 minutes and runs only when started explicitly. In GitHub Actions,
 select **Steady-state benchmark** and **Run workflow**. Download the
 `steady-state` artifact to inspect completed trials. For direct comparisons
 with historical measurements, use the same local hardware and Python build.
-Keep upstream Trio contributions separate. Licensing is pending owner decision;
-see docs/licensing.md before external contributions or publication.
+
+Keep upstream Trio contributions separate and preserve any upstream notices.
+See [licensing and attribution](docs/licensing.md).
