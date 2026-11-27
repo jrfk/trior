@@ -21,18 +21,32 @@ async def main():
 trior.run(main)
 ```
 
+[Implemented APIs](docs/api.md#implemented-apis) ·
+[Planned APIs](docs/api.md#planned-apis) · [Usage examples](docs/api.md#starting-and-joining-tasks)
+
+## Performance highlights
+
+These historical microbenchmarks compare Trior with Trio 0.35.0 on
+Linux x86_64 and CPython 3.12.14.
+
+| Workload | Trio median elapsed time | Trior median elapsed time | Speedup |
+|---|---:|---:|---:|
+| Start and clean up 600 children with `Nursery.start` | 15.77 ms | 3.64 ms | **4.33×** |
+| Handle 3,000 readiness and receive operations on one active socket pair, with 599 parked pairs | 45.76 ms | 25.50 ms | **1.79×** (epoll) |
+
+See the [startup benchmark](docs/research.md#stage-206-nurserystart)
+and [sparse I/O benchmark](docs/HANDOFF.md#performance-evidence) for the
+test conditions and CPU-time results. The [fixed-rate benchmark](#fixed-rate-benchmark)
+reports CPU occupancy for a 60-second mixed workload.
+
 ## Architecture
 
 Python executes user coroutines; Rust owns scheduler state, ready queues,
 timers, cancellation and I/O readiness. Linux uses epoll; macOS uses kqueue;
 poll is retained for comparison. The public Python package is `trior`.
 
-Current prototype: basic nurseries (including start/start_soon and task status), cancellation, timers, synchronization,
-memory channels and partial nonblocking socket operations. TCP connect,
-higher-level streams, DNS, threads and complete Trio API parity are pending.
 CPython 3.12 runtime tests pass on Linux x86_64 and macOS ARM64.
 
-- [API overview](docs/api.md) for examples and supported features.
 - [Architecture](docs/architecture.md) and [technical handoff](docs/HANDOFF.md)
   for runtime internals and limitations.
 - [Research](docs/research.md) and [roadmap](docs/ROADMAP.md) for measurements

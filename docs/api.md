@@ -5,6 +5,40 @@ and macOS ARM64 (kqueue) run the project's regression suite. Both platforms
 also exercise the poll backend. See the [README](../README.md) to build
 Trior locally.
 
+## Implemented APIs
+
+The compatibility target is Trio 0.35.0. This table describes Trior's current
+API surface. The [technical handoff](HANDOFF.md#verified-scope-and-current-limitations)
+tracks compatibility gaps and the cases covered by regression tests.
+
+| Area | APIs |
+|---|---|
+| Run and timers | `run`, `current_time`, `sleep`, `sleep_until`, `sleep_forever` |
+| Nurseries | `open_nursery`, `Nursery.start_soon`, `Nursery.start`, `Nursery.cancel_scope`, `TaskStatus.started`, `TASK_STATUS_IGNORED` |
+| Cancellation | `CancelScope` with `cancel()`, `deadline`, `shield`, `cancel_called` and `cancelled_caught`; `Cancelled` |
+| Synchronization | `Event` (`set`, `is_set`, `wait`); `Lock` and `Semaphore` (`acquire`, `acquire_nowait`, `release`, async context managers); `Lock.locked`, `Semaphore.value`, `Semaphore.max_value` |
+| Memory channels | `open_memory_channel`, `MemorySendChannel` (`send`, `send_nowait`), `MemoryReceiveChannel` (`receive`, `receive_nowait`, async iteration); both endpoints support `clone`, `close`, `aclose` and context managers |
+| Checkpoints and descriptor readiness | `trior.checkpoint`; under `trior.lowlevel`, `checkpoint`, `checkpoint_if_cancelled`, `cancel_shielded_checkpoint`, `wait_readable`, `wait_writable` and `notify_closing` |
+| Socket facade | Under `trior.socket`, `socket`, `socketpair`, `from_stdlib_socket` and `SocketType`. Async operations include `recv`, `recv_into`, `send` and `accept`. Synchronous operations include `bind`, `listen`, `getsockname`, `setsockopt`, `shutdown`, `fileno`, `close` and context managers. |
+| Resource and channel exceptions | `BusyResourceError`, `ClosedResourceError`, `BrokenResourceError`, `WouldBlock`, `EndOfChannel` |
+
+Nursery methods accept the `name` argument. Task name tracking and startup
+into a non-ancestor nursery are still pending.
+
+## Planned APIs
+
+These entries use Trio API names to describe the target scope.
+
+| Stage | Target scope |
+|---|---|
+| [21 · TCP streams](ROADMAP.md#stage-21--tcp-streams) | Nonblocking `SocketType.connect`, `SocketStream`, `SocketListener`, `open_tcp_stream` and `open_tcp_listeners`, starting with numeric IP addresses. Stream operations include `send_all`, `receive_some`, `send_eof` and `aclose`. |
+| [22 · DNS and connection fallback](ROADMAP.md#follow-up-details) | Async address resolution (`trio.socket.getaddrinfo` and `getnameinfo`) and Happy Eyeballs for hostname-based connections |
+| [25 · Thread bridge](ROADMAP.md#follow-up-details) | Thread interoperability under `trio.to_thread` and `trio.from_thread` |
+
+Guest mode (`trio.lowlevel.start_guest_run`) and instrumentation
+(`trio.abc.Instrument` and `trio.lowlevel.add_instrument` / `remove_instrument`) are open compatibility gaps.
+The [roadmap](ROADMAP.md) tracks the broader compatibility work.
+
 ## Starting and joining tasks
 
 Call `trior.run(async_fn, *args)` from synchronous code. It runs the
@@ -58,19 +92,3 @@ async def main():
 
 trior.run(main)
 ```
-
-## Supported areas
-
-| Area | APIs |
-|---|---|
-| Scheduling and time | `run`, `checkpoint`, `current_time`, `sleep`, `sleep_until`, `sleep_forever` |
-| Task lifecycle | `open_nursery`, `Nursery.start_soon`, `Nursery.start`, `TaskStatus`, `CancelScope` with deadline and shield |
-| Synchronization | `Event`, `Lock`, `Semaphore`, memory channels |
-| Descriptor readiness | `trior.lowlevel.wait_readable`, `wait_writable`, `notify_closing` |
-| Socket facade | `socket`, `socketpair`, `from_stdlib_socket`, async `recv`, `recv_into`, `send`, `accept` |
-
-The compatibility target is Trio 0.35.0. The current implementation covers
-the cases exercised by Trior's own tests. Nursery methods accept the `name`
-argument, with task name tracking still pending. TCP connect, high-level
-streams, DNS, thread bridges, guest mode and instrumentation are future work.
-See the [handoff](HANDOFF.md) and [roadmap](ROADMAP.md) for specific gaps.
