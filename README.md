@@ -29,15 +29,34 @@ trior.run(main)
 These historical microbenchmarks compare Trior with Trio 0.35.0 on
 Linux x86_64 and CPython 3.12.14.
 
-| Workload | Trio median elapsed time | Trior median elapsed time | Speedup |
-|---|---:|---:|---:|
-| Start and clean up 600 children with `Nursery.start` | 15.77 ms | 3.64 ms | **4.33×** |
-| Handle 3,000 readiness and receive operations on one active socket pair, with 599 parked pairs | 45.76 ms | 25.50 ms | **1.79×** (epoll) |
+### Nursery startup
 
-See the [startup benchmark](docs/research.md#stage-206-nurserystart)
-and [sparse I/O benchmark](docs/HANDOFF.md#performance-evidence) for the
-test conditions and CPU-time results. The [fixed-rate benchmark](#fixed-rate-benchmark)
-reports CPU occupancy for a 60-second mixed workload.
+Start children sequentially with `Nursery.start`, then release them and
+wait for them to exit. Each time is the median of seven trials.
+
+| Child tasks | Trio elapsed time | Trior elapsed time | Speedup |
+|---:|---:|---:|---:|
+| 64 | 1.755 ms | 0.392 ms | **4.48×** |
+| 600 | 15.766 ms | 3.640 ms | **4.33×** |
+| 2,000 | 51.302 ms | 13.057 ms | **3.93×** |
+
+[Startup benchmark details](docs/research.md#stage-206-nurserystart)
+
+### Sparse socket I/O
+
+One socket pair handles 3,000 readiness and receive operations while the
+other pairs are parked. Trior uses epoll. Each time is the median of five trials.
+
+| Socket pairs | Trio elapsed time | Trior elapsed time | Speedup |
+|---:|---:|---:|---:|
+| 64 | 32.31 ms | 22.83 ms | **1.42×** |
+| 600 | 45.76 ms | 25.50 ms | **1.79×** |
+| 2,000 | 79.44 ms | 44.24 ms | **1.80×** |
+
+[Sparse I/O benchmark details](docs/HANDOFF.md#performance-evidence)
+
+The [fixed-rate benchmark](#fixed-rate-benchmark) reports CPU occupancy
+for a 60-second mixed workload.
 
 ## Architecture
 
