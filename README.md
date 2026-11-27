@@ -54,10 +54,27 @@ TRIOR_REACTOR=poll python -m pytest -q
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for benchmark and contribution guidance.
 
+## Acknowledgments
+
+Trior is inspired by [Trio](https://github.com/python-trio/trio) and its
+approach to structured concurrency.
+
+We deeply appreciate the work of the Trio authors and contributors.
+Trior would not exist without their ideas and contributions.
+
+Our goal is to build on Trio's excellent design by exploring how Rust can
+improve runtime performance and CPU efficiency while preserving Trio's
+structured concurrency semantics.
+
 ## Fixed-rate benchmark
 
-Compare Trio 0.35.0 and Trior with 600 concurrent workers (timers, Events,
-memory channels and local socket I/O) for 60 seconds at 10, 20, 50 and 100 Hz:
+The benchmark compares Trio 0.35.0 and Trior with 600 concurrent workers
+(timers, Events, memory channels and local socket I/O) for 60 seconds at
+10, 20, 50 and 100 Hz.
+
+![Median CPU occupancy on macOS ARM64. At 10, 20, 50 and 100 Hz, Trio used 13.71%, 20.76%, 39.58% and 53.47%, while Trior used 6.46%, 11.61%, 26.65% and 45.91%.](docs/steady-state-cpu-occupancy.png)
+
+To reproduce the comparison, run the benchmark from the repository root.
 
 ```sh
 python benchmarks/bench_steady_state.py compare --output /tmp/trior-steady-state.json
@@ -73,18 +90,6 @@ saves each trial as it completes. In the original macOS ARM64 campaign,
 Trior's median CPU occupancy was 14.1% to 52.9% lower at equal completed
 work. That campaign predates dispatch timing.
 See [measurement protocol and results](docs/steady-state-results.md).
-
-## Acknowledgments
-
-Trior is inspired by [Trio](https://github.com/python-trio/trio) and its
-approach to structured concurrency.
-
-We deeply appreciate the work of the Trio authors and contributors.
-Trior would not exist without their ideas and contributions.
-
-Our goal is to build on Trio's excellent design by exploring how Rust can
-improve runtime performance and CPU efficiency while preserving Trio's
-structured concurrency semantics.
 
 ## License status
 
