@@ -10,6 +10,7 @@ license = "MIT"
 license-files = ["LICENSE", "LICENSE.Trio"]
 requires-python = ">=3.12,<3.13"
 dependencies = []
+readme = "docs/package-description.md"
 
 [project.optional-dependencies]
 test = ["trio==0.35.0", "pytest>=9,<10"]

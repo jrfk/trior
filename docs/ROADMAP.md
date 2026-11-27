@@ -1,15 +1,16 @@
 # Trior development roadmap
 
-Last algorithm implementation: Stage 20 (c783eb1); Stage 20.5 reorganizes the repository. Roadmap is a working
-proposal; reorder based on dependencies, benchmark results and owner direction.
+Stage 20 introduced the current native I/O reactors. Stage 20.6 added the
+nursery startup handshake. Reorder planned work based on dependencies,
+benchmark results and owner direction.
 
 | Stage | Task | Status |
 |---|---|---|
 | 1–17 | Research, independent scheduler, cancellation, timers | Research/prototype complete |
 | 18 | Synchronization primitives and package | Prototype complete |
 | 19 | Unix I/O reactor and partial socket API | Prototype complete |
-| 20 | epoll/kqueue and sparse/dense measurements | Linux verified; macOS type-check only |
-| 20.5 | OSS-oriented repository structure and package separation | Complete (license pending) |
+| 20 | epoll/kqueue and sparse/dense measurements | Reactor regression tests pass on Linux and macOS ARM64 |
+| 20.5 | OSS-oriented repository structure and package separation | Complete |
 | 20.6 | Nursery.start / TaskStatus | Implemented and Linux-tested |
 | 21 | TCP connect, SocketStream, listeners | Next |
 | 22 | Async DNS and Happy Eyeballs | Planned |
