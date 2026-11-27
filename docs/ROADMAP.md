@@ -21,8 +21,8 @@ proposal; reorder based on dependencies, benchmark results and owner direction.
 | 28 | HTTP application benchmarks | Planned |
 | 29 | Long-running 600-task mixed workload | Fixed-rate benchmark implemented. Sparse phases and cancellation churn are planned. |
 | 30 | Python 3.15 and free-threaded build/runtime validation | Planned |
-| 31 | Linux/macOS CI, architecture and wheel matrix | Planned |
-| 32 | Packaging, documentation, publication preparation | Planned |
+| 31 | Linux/macOS CI, architecture and wheel matrix | CI and initial Linux x86_64/macOS ARM64 wheels verified |
+| 32 | Packaging, documentation, publication preparation | Release workflow drafted and MIT license selected |
 
 ## Stage 21 — TCP streams
 

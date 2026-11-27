@@ -49,6 +49,7 @@ TRIOR_REACTOR=poll python -m pytest -q
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for benchmark and contribution guidance.
 See [the release guide](docs/release.md) for distribution builds and publishing setup.
+The distribution workflow tests installed wheels on Linux x86_64 and macOS ARM64.
 
 ## Fixed-rate benchmark
 
@@ -70,10 +71,8 @@ Trior's median CPU occupancy was 14.1% to 52.9% lower at equal completed
 work. That campaign predates dispatch timing.
 See [measurement protocol and results](docs/steady-state-results.md).
 
-## License status
+## License
 
-Trior's independent-code license has not yet been selected by the owner.
-The existing Trio copyright and MIT notice are retained in
-[LICENSE.Trio](LICENSE.Trio) for historical and potentially derived material.
-See [licensing notes](docs/licensing.md). This is a pre-release repository;
-do not interpret the upstream notice as a license grant for all Trior code.
+Trior is licensed under the [MIT License](LICENSE). The upstream Trio copyright
+and MIT notice are retained in [LICENSE.Trio](LICENSE.Trio).
+See [licensing and attribution](docs/licensing.md).

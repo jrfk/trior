@@ -6,10 +6,10 @@ source distribution. It installs each wheel in a fresh environment and
 runs the test suite with the default reactor and poll. Build artifacts are
 available on GitHub Actions for inspection.
 
-Before publishing, decide the Trior license, add the license file and
-declare it in `pyproject.toml`. Keep `LICENSE.Trio` for the upstream notice.
+Before publishing, verify that the build includes Trior's MIT license and
+the upstream notice in `LICENSE.Trio`.
 Review the repository's branches and history before switching it to public.
-See [licensing status](licensing.md).
+See [licensing and attribution](licensing.md).
 
 ## Configure publishing
 
